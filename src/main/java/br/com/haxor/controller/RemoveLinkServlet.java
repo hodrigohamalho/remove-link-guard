@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.binary.Base64;
+
 public class RemoveLinkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -20,6 +22,7 @@ public class RemoveLinkServlet extends HttpServlet {
 		String url = request.getParameter("link");
 		
 		request.setAttribute("link", url);
+		Base64 base64 = new Base64();
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/link.jsp");
 		dispatcher.forward(request, response);
