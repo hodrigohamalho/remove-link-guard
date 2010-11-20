@@ -7,11 +7,12 @@
   
   <servlet>
   	<servlet-name>RemoveLinkServlet</servlet-name>
-  	<display-name>RemoveLinkServlet</display-name>
   	<servlet-class>br.com.haxor.controller.RemoveLinkServlet</servlet-class>
   </servlet>
+  
   <servlet-mapping>
   	<servlet-name>RemoveLinkServlet</servlet-name>
-  	<url-pattern>/removerLink.do</url-pattern>
+  	<url-pattern>/removeLink.do</url-pattern>
   </servlet-mapping>
+  
 </web-app>

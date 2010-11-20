@@ -4,7 +4,7 @@ $(document).ready(function(){
 		var link = $("#link").attr('value');
 		
 		$.ajax({
-			url: "removerLink.do",
+			url: "removeLink.do",
 			type: 'POST',
 			data: "link="+link,
 			beforeSend: function(){
