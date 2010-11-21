@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.codec.binary.Base64;
+import br.com.haxor.service.RemoveLinkService;
+import br.com.haxor.service.RemoveLinkServiceImpl;
 
 public class RemoveLinkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+	private RemoveLinkService linkService= new RemoveLinkServiceImpl();
+	
 	/**
 	 * Ate agora soh existem esses casos.
 	 * http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
@@ -21,9 +24,20 @@ public class RemoveLinkServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getParameter("link");
 		
-		request.setAttribute("link", url);
-		Base64 base64 = new Base64();
+		String brokenUrl = "";
 		
+		try{
+			brokenUrl = this.linkService.breakUrl(url);
+			
+			if (brokenUrl == null){
+				brokenUrl = "";
+			}
+		}catch (Exception e) { 
+			e.getStackTrace();
+			request.setAttribute("erro", e.getMessage());
+		}
+		
+		request.setAttribute("link", brokenUrl);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/link.jsp");
 		dispatcher.forward(request, response);
 	}

@@ -1,5 +1,5 @@
 package br.com.haxor.service;
 
-public class RemoveLinkService {
-
+public interface RemoveLinkService {
+	String breakUrl(String url) throws Exception;
 }

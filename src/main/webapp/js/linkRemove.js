@@ -15,4 +15,10 @@ $(document).ready(function(){
 			}
 		});
 	});
+	
+    $('#url').click(function(){
+    	$(this).attr('href',$('#novoLink').html());
+        window.open(this.href);
+        return false;
+    });
 });

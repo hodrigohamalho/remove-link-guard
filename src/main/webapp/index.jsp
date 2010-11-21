@@ -9,12 +9,12 @@
 	<h2>Protetor de link é meu saco...</h2>
 	
 	<span>Insira seu link aqui</span>
-	<input type="text" name="link" id="link"/>
+	<input type="text" name="link" id="link" size="120"/>
 	<input type="submit" id="submeter" value="Converter"/>
 	
 	<br />
 
-	Novo Link: <span id="novoLink"> ... </span>
+	<a href="" id="url" > <span id="novoLink"> </span> </a>
 </body>
 
 </html>
