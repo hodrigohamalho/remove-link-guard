@@ -21,4 +21,16 @@ $(document).ready(function(){
         window.open(this.href);
         return false;
     });
+    
+    $('#link').focus(function(){
+    	if ($(this).attr('value') == 'Insira seu link aqui'){
+    		$(this).attr('value', ' ');
+    	}
+    });
+    
+    $('#link').blur(function(){
+    	if ($(this).attr('value') == ' '){
+    		$(this).attr('value', 'Insira seu link aqui');
+    	}
+    });
 });
