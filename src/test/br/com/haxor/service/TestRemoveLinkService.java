@@ -16,6 +16,10 @@ import org.junit.Test;
    http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
    http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth
    http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/  = "http://www.2shared.com/video/MxQbakWF/OAPDFEI.html"
+   
+   Casos que ainda não atendem:
+   http://meggacelular.com/baixando/?link=rar.esooL_-_odatruF_ylleN/99448921/selif/moc.erahsdipar//:ptth
+   http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3
  */
 public class TestRemoveLinkService {
 	
@@ -30,7 +34,7 @@ public class TestRemoveLinkService {
 		assertNotNull(decoded);
 		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", decoded);
 	}
-	
+
 	@Test
 	public void breakSimpleURL() throws Exception{
 		String wrongUrl = "http://www.megaupload.com/?d=G6ZFTBJW";
