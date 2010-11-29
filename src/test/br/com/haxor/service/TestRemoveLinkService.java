@@ -34,7 +34,7 @@ public class TestRemoveLinkService {
 		assertNotNull(decoded);
 		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", decoded);
 	}
-
+	
 	@Test
 	public void breakSimpleURL() throws Exception{
 		String wrongUrl = "http://www.megaupload.com/?d=G6ZFTBJW";

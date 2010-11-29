@@ -13,7 +13,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		String url = "";
 		
 		if (protectedUrl.trim().contains(" ")){
-			throw new IllegalArgumentException("Link inválido");
+			throw new IllegalArgumentException("Link inv√°lido");
 		}
 		
 		url = parseUrl(protectedUrl.trim());
@@ -52,7 +52,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		}else if (protectedUrl.contains("http://")){
 			url = protectedUrl;
 		}else{
-			throw new IllegalArgumentException("Link inválido");
+			throw new IllegalArgumentException("Link inv√°lido");
 		}
 
 		return url;

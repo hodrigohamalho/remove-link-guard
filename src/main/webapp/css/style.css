@@ -1,13 +1,28 @@
 .box {
-	-moz-border-radius: 5px;
+	background: #fff;
 	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+
 	-moz-box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 	box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+	
 	padding: 20px;
 	width: 70%;
 	margin: auto;
 	margin-top: 52px;
+}
+
+.block {
+  background: #fff;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  margin: 10px 10px 0 0;
+  display: block;
+  height: 150px;
+  text-align: center;
 }
 
 #inputs{
@@ -44,45 +59,67 @@ input:focus {
 	width: 60%;
 }
 
-.button {
-	-moz-border-radius: 0.8em 0.8em 0.8em 0.8em;
-	-moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-	cursor: pointer;
-	display: inline-block;
-	font: 14px/100% Arial, Helvetica, sans-serif;
-	margin: 0 2px;
-	outline: medium none;
-	padding: 0.5em 1.5em 0.55em;
-	text-align: center;
-	text-decoration: none;
-	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
-	vertical-align: top;
-	margin: 0 2px;
-	margin-top: 10px;
+#url {
+	display: block;
+	padding-top: 20px;
+	font-size: 20px;
 }
 
-.button:hover {
-	text-decoration: none;
+
+button.slick-black {
+  background: #111;
+  background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
+              rgba(0, 0, 0, 0.9) 0%,
+              rgba(20, 20, 20, 0.9) 50%,
+              rgba(30, 30, 30, 0.9) 50%,
+              rgba(50, 50, 50, 0.9) 100%);
+  background: -webkit-gradient(linear, 0 0, 0 100%,
+              color-stop(0, rgba(50, 50, 50, 0.9)),
+              color-stop(0.5, rgba(30, 30, 30, 0.9)),
+              color-stop(0.5, rgba(20, 20, 20, 0.9)),
+              color-stop(1, rgba(0, 0, 0, 0.9)));
+  border: 0;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  box-shadow: inset 1px 1px 1px 0px rgba(135, 135, 135, 0.1), inset -1px -1px 1px 0px rgba(135, 135, 135, 0.1);
+  -moz-box-shadow: inset 1px 1px 1px 0px rgba(135, 135, 135, 0.1), inset -1px -1px 1px 0px rgba(135, 135, 135, 0.1);
+  -webkit-box-shadow: inset 1px 1px 1px 0px rgba(135, 135, 135, 0.1), inset -1px -1px 1px 0px rgba(135, 135, 135, 0.1);
+  color: #fff;
+  font-family: "helvetica neue", helvetica, arial, sans-serif;
+  font-size: 16px;
+  font-weight: lighter;
+  line-height: 1;
+  padding: 7px 0;
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, .8), 0 1px 1px rgba(255, 255, 255, 0.3);
+  text-align: center;
+  width: 150px;
 }
 
-.button:active {
-	position: relative;
-	top: 1px;
+button.slick-black:hover {
+  background: #222;
+  background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
+              rgba(20, 20, 20, 0.9) 0%,
+              rgba(40, 40, 40, 0.9) 50%,
+              rgba(50, 50, 50, 0.9) 50%,
+              rgba(70, 70, 70, 0.9) 100%);
+  background: -webkit-gradient(linear, 0 0, 0 100%,
+              color-stop(0, rgba(70, 70, 70, 0.9)),
+              color-stop(0.5, rgba(50, 50, 50, 0.9)),
+              color-stop(0.5, rgba(40, 40, 40, 0.9)),
+              color-stop(1, rgba(20, 20, 20, 0.9)));
 }
 
-.black {
-	background: -moz-linear-gradient(center top, #666666, #000000) repeat
-		scroll 0 0 transparent;
-	border: 1px solid #333333;
-	color: #D7D7D7;
-}
-
-.black:hover {
-	background: -moz-linear-gradient(center top, #444444, #000000) repeat
-		scroll 0 0 transparent;
-}
-
-.black:active {
-	background: -moz-linear-gradient(center top, #000000, #444444) repeat scroll 0 0 transparent;
-	color: #666666;
+button.slick-black:active {
+  background: #000;
+  background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000,
+              rgba(0, 0, 0, 0.9) 0%,
+              rgba(10, 10, 10, 0.9) 50%,
+              rgba(20, 20, 20, 0.9) 50%,
+              rgba(30, 30, 30, 0.9) 100%);
+  background: -webkit-gradient(linear, 0 0, 0 100%,
+              color-stop(0, rgba(30, 30, 30, 0.9)),
+              color-stop(0.5, rgba(20, 20, 20, 0.9)),
+              color-stop(0.5, rgba(10, 10, 10, 0.9)),
+              color-stop(1, rgba(0, 0, 0, 0.9)));
 }

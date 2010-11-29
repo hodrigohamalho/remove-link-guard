@@ -12,9 +12,8 @@
 			<img alt="remove link" src="images/link-me.jpg" align="left" />
 			<input type="text" name="link" id="link" value="Insira seu link aqui" />
 			
-			<input type="submit" id="submeter" value="Converter" class="button black"/>
+			<button id="submeter" class="slick-black">Converter</button>
 			
-			<br />	
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 		</div>
 	</div>
