@@ -16,11 +16,6 @@ public class RemoveLinkServlet extends HttpServlet {
 
 	private RemoveLinkService linkService= new RemoveLinkServiceImpl();
 	
-	/**
-	 * Ate agora soh existem esses casos.
-	 * http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
-	 * http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getParameter("link");
 		
@@ -34,7 +29,7 @@ public class RemoveLinkServlet extends HttpServlet {
 			}
 		}catch (Exception e) { 
 			e.getStackTrace();
-			request.setAttribute("erro", e.getMessage());
+			request.setAttribute("erro", e.getMessage().replace("á", "&aacute;"));
 		}
 		
 		request.setAttribute("link", brokenUrl);
