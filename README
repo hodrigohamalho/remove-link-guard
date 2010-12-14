@@ -3,4 +3,8 @@ Essa aplicação tem como objetivo remover ou descriptografar qualquer link que 
 Alguns exemplos de links que a aplicação remove:
 http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
 http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth
-http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/ 
+http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/
+
+Bugs conhecidos:
+	- Incompatibilidade com o IE. 
+	- Não remove links que não esteja separado por ?url
