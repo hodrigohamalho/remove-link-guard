@@ -20,6 +20,9 @@ import org.junit.Test;
    Casos que ainda não atendem:
    http://meggacelular.com/baixando/?link=rar.esooL_-_odatruF_ylleN/99448921/selif/moc.erahsdipar//:ptth
    http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3
+   
+   ahiosihoasdhioahisodhttp://ahiosehioase
+   jdownloader
  */
 public class TestRemoveLinkService {
 	
