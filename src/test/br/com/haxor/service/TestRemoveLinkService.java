@@ -4,9 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.commons.codec.binary.Base64;
 import org.junit.Test;
 
@@ -117,21 +114,23 @@ public class TestRemoveLinkService {
 	}
 	
 	@Test
-	public void testandoMatcher(){  
-		Pattern padrao = Pattern.compile("[a-zA-Z_0-9]") ;
-		Matcher matcher = padrao.matcher("/a/bbc");
-		while (matcher.find()){
-			System.out.println(matcher.group());
-		}
-	}
-	
-	@Test
 	public void breakUrlThatNotContainsTheWordUrl() throws Exception{
 		String wrongUrl = "http://fire.tiozao.net/?link=Sjh56Jm/elif/moc.evreselif.www//:ptth";
 		String url = service.breakUrl(wrongUrl);
 		
 		assertNotNull(url);
 		assertEquals("http://www.fileserve.com/file/mJ65hjS", url);
+	}
+	
+	@Test
+	public void breakUrlWithoutHttp(){
+		String wrongUrl = "www.google.com.br";
+		try{
+			service.breakUrl(wrongUrl);
+			fail("url should throw exception");
+		}catch (Exception e) {
+			assertEquals("Url no formato inválido. 'necessita de http://'", e.getMessage());
+		}
 	}
 
 }
