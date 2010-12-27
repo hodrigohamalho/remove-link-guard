@@ -124,5 +124,14 @@ public class TestRemoveLinkService {
 			System.out.println(matcher.group());
 		}
 	}
+	
+	@Test
+	public void breakUrlThatNotContainsTheWordUrl() throws Exception{
+		String wrongUrl = "http://fire.tiozao.net/?link=Sjh56Jm/elif/moc.evreselif.www//:ptth";
+		String url = service.breakUrl(wrongUrl);
+		
+		assertNotNull(url);
+		assertEquals("http://www.fileserve.com/file/mJ65hjS", url);
+	}
 
 }

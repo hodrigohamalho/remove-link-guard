@@ -8,16 +8,22 @@
 </head>
 
 <body>
+	
 	<div class="box">
+		<a href="http://github.com/hodrigohamalho/remove-link-guard">
+			<img id="forkme" src="<%=request.getContextPath()%>/images/forkme_left_grey.png" alt="Fork me on GitHub" />
+		</a>
 		<div id="inputs">
 			<img alt="remove link" src="images/link-me.jpg" align="left" />
-			<p>Esta aplicação remove o protetor de link da url.</p>
-			<p>
-				Exemplo: Você vai baixar o seu filme/seriado favorito e quando 
-				clica no link abre aquela maldita página "Cadastre o seu celular..."<br/> 
-				Para contornar esse problema basta colocar a url dessa página no campo 
-				abaixo que será gerado o link direto para o download.
-			</p>
+			
+			<h3>
+				Tentando fazer download e sendo barrado por aqueles "protetores de link" 
+				irritantes?
+			</h3>
+			<h3>
+				Insira a url com o protetor de link abaixo, e o protetor de link será removido 
+				para que você possa continuar com o download.
+			</h3>
 			<input type="text" name="link" id="link" value="Insira seu link aqui" />
 			
 			<button id="submeter" class="slick-black">Converter</button>
@@ -25,6 +31,7 @@
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 		</div>
 	</div>
+	
 </body>
 
 </html>
