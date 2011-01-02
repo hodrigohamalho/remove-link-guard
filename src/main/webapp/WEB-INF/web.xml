@@ -7,12 +7,22 @@
   
   <servlet>
   	<servlet-name>RemoveLinkServlet</servlet-name>
-  	<servlet-class>br.com.haxor.controller.RemoveLinkServlet</servlet-class>
+  	<servlet-class>br.com.jspace.controller.RemoveLinkServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+  	<servlet-name>SuggestionServlet</servlet-name>
+  	<servlet-class>br.com.jspace.controller.SuggestionServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
   	<servlet-name>RemoveLinkServlet</servlet-name>
   	<url-pattern>/removeLink.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+  	<servlet-name>SuggestionServlet</servlet-name>
+  	<url-pattern>/suggestion.do</url-pattern>
   </servlet-mapping>
   
 </web-app>

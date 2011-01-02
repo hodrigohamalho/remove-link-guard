@@ -1,4 +1,4 @@
-package br.com.haxor.service;
+package br.com.jspace.service;
 
 public interface RemoveLinkService {
 	

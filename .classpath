@@ -16,5 +16,11 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-lang-2.5.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/dsn.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/imap.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mailapi.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/pop3.jar"/>
+	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/smtp.jar"/>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>

@@ -1,4 +1,4 @@
-package br.com.haxor.controller;
+package br.com.jspace.controller;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.haxor.service.RemoveLinkService;
-import br.com.haxor.service.RemoveLinkServiceImpl;
+import br.com.jspace.service.RemoveLinkService;
+import br.com.jspace.service.RemoveLinkServiceImpl;
 
 public class RemoveLinkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
