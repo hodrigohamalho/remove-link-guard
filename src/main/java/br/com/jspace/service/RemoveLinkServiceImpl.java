@@ -1,5 +1,7 @@
 package br.com.jspace.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -11,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 public class RemoveLinkServiceImpl implements RemoveLinkService {
 	
 	String BEETWEN_QUERY_AND_EQUALS = "\\?[\\w]++\\=";
+	String HTTP_ASCII = "687474703";
 
 	public String breakUrl(String protectedUrl) {
 		String url = "";
@@ -24,6 +27,8 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 			url = decodeBase64Url(url);
 		}else if (url.contains("//:ptth")){
 			url = decodeInvertedUrl(url);
+		}else if (url.startsWith(HTTP_ASCII)){
+			url = decodeAsciiLink(url);
 		}
 
 		return url;
@@ -68,7 +73,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		
 		int i = StringUtils.countMatches(protectedUrl, "http://");
 		
-		if (i == 1 && protectedUrl.contains(":ptth")){
+		if (i == 1 && (protectedUrl.contains(":ptth") || protectedUrl.contains(HTTP_ASCII))){
 			simpleProtectedUrl = false;
 		}else if (i == 1){
 			simpleProtectedUrl = true;
@@ -103,5 +108,35 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		url = protectedUrl.substring(protectedUrl.indexOf(param) + param.length());
 		
 		return url;
+	}
+	
+	private String decodeAsciiLink(String protectedUrl){
+		String[] ascii = new String[protectedUrl.length()/2];
+		
+		// Quebra a string com a sequencia de caracteres ascii em duplas de caracteres.
+		int j = 0;
+		for (int i = 0; i < protectedUrl.length() ; i +=2){
+			ascii[j] = protectedUrl.substring(i, i+2);
+			j++;
+		}
+
+		// Transforma essa sequencia de duplo caracteres em inteiros hexadecimais.
+		List<Integer> ascDec = new ArrayList<Integer>();
+		for (String s : ascii){
+			ascDec.add(Integer.parseInt(s, 16));
+		}
+
+
+		// Transforma os hexadecimais em characteres, concatenando em uma string
+		
+		StringBuilder link = new StringBuilder();
+		
+		for (Integer i : ascDec){
+			int nativeInt = i;
+			
+			link.append((char) nativeInt);
+		}
+		
+		return link.toString();
 	}
 }
