@@ -25,7 +25,7 @@ public class TestRemoveLinkService {
 	public void decodeBase64(){
 		// Vou testar soh o decode aqui.
 		String code = "aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/";
-
+		
 		String decoded = new String(Base64.decodeBase64(code.getBytes()));
 		assertNotNull(decoded);
 		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", decoded);

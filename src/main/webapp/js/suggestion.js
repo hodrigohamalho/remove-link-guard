@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('#erro').hide();
 
 	$(".sendme").click(function(){
-		$('#erro').show();
+		$('#erro').show("slow");
 	});
 	
 	$("#load").hide();
@@ -17,7 +17,7 @@ $(document).ready(function(){
 			
 			beforeSend: function(){
 				$("#load").show();
-				$("#send_suggestion").hide();
+				$("#send_suggestion").hide("slow");
 				
 			},
 			success: function(data){
@@ -26,7 +26,7 @@ $(document).ready(function(){
 				$("#send_suggestion").show();
 				
 				$("#sug_msg").html('Email enviado com sucesso');
-				$('#erro').hide();
+				$('#erro').hide("slow");
 			}
 		});
 	});
