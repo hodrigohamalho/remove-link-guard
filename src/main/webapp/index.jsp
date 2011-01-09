@@ -4,8 +4,8 @@
 	<title>Remove Protetor de Link</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO8859-1" >
-	<meta name="description" content="Aplicação que remove protetor de link do site" />
-	<meta name="keywords" content="remove, protetor, link, url" />
+	<meta name="description" content="Aplicação que remove os irritantes protetores de link" />
+	<meta name="keywords" content="proteção link, remove protetor link, protetor de link, proteger link, remove url protector" />
 </head>
 
 <body>
