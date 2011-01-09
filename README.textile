@@ -12,7 +12,7 @@ bq. *Alguns exemplos de links que a aplicação remove:*
 bq. *Bugs conhecidos:*
 	# Incompatibilidade com o IE.
 	
-bq. *Acesso:
-	# www.jspace.com.br/link
+bq. *Acesso:*
+	# "www.jspace.com.br/link" :http://www.jspace.com.br/link
 
 	
