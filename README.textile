@@ -1,7 +1,7 @@
 h1. Remove Protetor de Links
 
-h2. Objetivo:*
-	* Remover ou descriptografar qualquer link que esteja protegido com um protetor de link.
+h2. Objetivo:
+	Remover ou descriptografar qualquer link que esteja protegido com um protetor de link.
 
 h2. Alguns exemplos de links que a aplicação remove:*
 	http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
