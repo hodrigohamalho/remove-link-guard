@@ -4,8 +4,8 @@
 	<title>Remove Protetor de Link</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO8859-1" >
-	<meta name="description" content="Aplicação que remove os irritantes protetores de link" />
-	<meta name="keywords" content="proteção link, remove protetor link, protetor de link, proteger link, remove url protector" />
+	<meta name="description" content="Remover protetor de link. Baixar sem precisar cadastrar celular. Remover Protetor de Link. Burlar protetor de link." />
+	<meta name="keywords" content="desproteger link, remove protetor de link, remover link protegido, protetor de url, burlar protetor de link, baixar sem precisar cadastrar celular." />
 </head>
 
 <body>
@@ -15,19 +15,26 @@
 			<img id="forkme" src="<%=request.getContextPath()%>/images/forkme_left_grey.png" alt="Fork me on GitHub" />
 		</a>
 		
-		<a href="http://www.jspace.com.br/link">
-			<img alt="remover protetor de link" id="logo" src="images/link-me.jpg" align="left" />
-		</a>
 		<div id="inputs">
-			
-			<h3>
-				Tentando fazer download e sendo barrado por aqueles "protetores de link" 
-				irritantes?
-			</h3>
-			<h3>
-				Insira a url com o protetor de link abaixo, e o protetor de link será removido 
-				para que você possa continuar com o download.
-			</h3>
+			<table>
+				<tr>
+					<td width="40%">
+						<a href="http://www.jspace.com.br/link">
+							<img alt="remover protetor de link" id="logo" src="images/link-me.jpg" align="left"/>
+						</a>
+					</td>
+					<td>
+						<h3>
+							Tentando fazer download e sendo barrado por aqueles "protetores de link" 
+							irritantes?
+						</h3>
+						<h3>
+							Insira a url com o protetor de link abaixo, e o protetor de link será removido 
+							para que você possa continuar com o download.
+						</h3>
+					</td>
+				</tr>
+			</table>
 			<input type="text" name="link" id="link" value="Insira seu link aqui" />
 			
 			<button id="submeter" class="slick-black">Converter</button>
@@ -40,7 +47,7 @@
 			<div id='erro'>
 				<textarea id="suggestion" rows="5" cols="60%"></textarea><br/>
 				<img alt="ajax loader" id="load" src="images/ajax-loader.gif" />
-				<button id="send_suggestion" class="slick-black" style="width: 50px; font-size: 14px; margin-top: 3px;">Enviar</button>
+				<button id="send_suggestion" class="slick-black" style="width: 70px; font-size: 14px; margin-top: 3px;">Enviar</button>
 			</div>
 		</div>
 	</div>

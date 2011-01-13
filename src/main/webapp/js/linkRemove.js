@@ -1,8 +1,11 @@
 $(document).ready(function(){
+
+	$('input#link').focus();
+
 	$("#submeter").click(function(){
-		
+
 		var link = $("#link").attr('value');
-		
+
 		$.ajax({
 			url: "removeLink.do",
 			type: 'POST',
@@ -15,22 +18,28 @@ $(document).ready(function(){
 			}
 		});
 	});
-	
-    $('#url').click(function(){
-    	$(this).attr('href',$('#novoLink').html());
-        window.open(this.href);
-        return false;
-    });
-    
-    $('#link').focus(function(){
-    	if ($(this).attr('value') == 'Insira seu link aqui'){
-    		$(this).attr('value', ' ');
-    	}
-    });
-    
-    $('#link').blur(function(){
-    	if ($(this).attr('value') == ' '){
-    		$(this).attr('value', 'Insira seu link aqui');
-    	}
-    });
+
+	$('#url').click(function(){
+		$(this).attr('href',$('#novoLink').html());
+		window.open(this.href);
+		return false;
+	});
+
+	$('#link').focus(function(){
+		if ($(this).attr('value') == 'Insira seu link aqui'){
+			$(this).attr('value', ' ');
+		}
+	});
+
+	$('#link').blur(function(){
+		if ($(this).attr('value') == ' '){
+			$(this).attr('value', 'Insira seu link aqui');
+		}
+	});
+
+	// Se o browser for i.e, remove a classe dos botoes
+	if ( $.browser.msie ) {
+		$("#submeter").removeClass();
+		$("#send_suggestion").removeClass();
+	}
 });
