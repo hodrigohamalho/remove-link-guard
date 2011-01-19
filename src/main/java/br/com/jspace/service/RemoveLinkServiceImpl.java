@@ -13,6 +13,7 @@ import org.apache.commons.lang.StringUtils;
 public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 	String BEETWEN_QUERY_AND_EQUALS = "\\?[\\w]++\\=";
+	String BEETWEN_QUERY_AND_EXCLAMATION = "\\?[\\w]++\\!";
 	String HTTP_ASCII = "687474703";
 
 	public String breakUrl(String protectedUrl) {
@@ -20,15 +21,18 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 		if (protectedUrl.trim().contains(" ")){
 			throw new IllegalArgumentException("Link inválido");
+		}else if (!protectedUrl.contains("http://")){
+			throw new IllegalArgumentException("Url no formato inválido. 'necessita de http://'");
 		}
-
+		
 		url = parseUrl(protectedUrl.trim());
-		if (url.endsWith("=/")){
+		
+		if (url.startsWith(HTTP_ASCII)){
+			url = decodeAsciiLink(url);
+		}else if (Base64.isArrayByteBase64(url.getBytes())){
 			url = decodeBase64Url(url);
 		}else if (url.contains("//:ptth")){
 			url = decodeInvertedUrl(url);
-		}else if (url.startsWith(HTTP_ASCII)){
-			url = decodeAsciiLink(url);
 		}
 
 		return url;
@@ -47,10 +51,10 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	private  String parseUrl(String protectedUrl){
 		String url = "";
 
-		if (!isASimpleProtectedUrl(protectedUrl) && containsSomethingBetweenQueryAndEquals(protectedUrl)){
+		if (!isASimpleProtectedUrl(protectedUrl) && containsSomethingBetweenQueryAndEqualsOrExclamation(protectedUrl)){
 			url = afterQueryHaveNumber(protectedUrl);
 			if (url == null){
-				url = getStringAfterQueryAndEquals(protectedUrl);
+				url = getStringAfterQueryAndEqualsOrExclamation(protectedUrl);
 
 				if (protectedUrl.endsWith("=/")){
 					Pattern p = Pattern.compile("(\\w)*=/");
@@ -61,8 +65,6 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 			}
 		}else if (protectedUrl.contains("http://")){
 			url = protectedUrl;
-		}else if (!protectedUrl.contains("http://")){
-			throw new IllegalArgumentException("Url no formato inválido. 'necessita de http://'");
 		}else{
 			throw new IllegalArgumentException("Link inválido");
 		}
@@ -88,7 +90,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 		int i = StringUtils.countMatches(protectedUrl, "http://");
 
-		if (i == 1 && (protectedUrl.contains(":ptth") || protectedUrl.contains(HTTP_ASCII))){
+		if (i == 1 && (protectedUrl.contains(":ptth") || protectedUrl.contains(HTTP_ASCII) || StringUtils.countMatches(protectedUrl, "/") > 3)){
 			simpleProtectedUrl = false;
 		}else if (i == 1){
 			simpleProtectedUrl = true;
@@ -97,8 +99,14 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		return simpleProtectedUrl;
 	}
 
-	private boolean containsSomethingBetweenQueryAndEquals(String protectedUrl){
-		Pattern p = Pattern.compile(BEETWEN_QUERY_AND_EQUALS);
+	private boolean containsSomethingBetweenQueryAndEqualsOrExclamation(String protectedUrl){
+		Pattern p = null;
+		
+		if (protectedUrl.contains("?") && protectedUrl.contains("=")){
+			p = Pattern.compile(BEETWEN_QUERY_AND_EQUALS);
+		}else if (protectedUrl.contains("?") && protectedUrl.contains("!")){
+			p = Pattern.compile(BEETWEN_QUERY_AND_EXCLAMATION);
+		}
 		Matcher m = p.matcher(protectedUrl.toLowerCase());
 
 		if (m.find()){
@@ -108,11 +116,18 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		return false;
 	}
 
-	private String getStringAfterQueryAndEquals(String protectedUrl){
+	private String getStringAfterQueryAndEqualsOrExclamation(String protectedUrl){
 		String url = "";
 		String param = "";
-
-		Pattern p = Pattern.compile("\\?[\\w]++\\=");
+		
+		Pattern p = null;
+		if (protectedUrl.contains("=")){
+			p = Pattern.compile("\\?[\\w]++\\=");
+		}else if (protectedUrl.contains("!")){
+			p = Pattern.compile("\\?[\\w]++\\!");
+		}
+		
+		
 		Matcher m = p.matcher(protectedUrl);
 
 		while(m.find()){

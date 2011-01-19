@@ -147,4 +147,12 @@ public class TestRemoveLinkService {
 		String url = service.breakUrl(wrongUrl);
 		assertEquals("http://www.megaupload.com/?d=305O5276", url);
 	}
+	
+	@Test
+	public void breakUrlWithParamBetweenQueryAndExclamation() throws Exception{
+		String wrongUrl = "http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3";
+		
+		String url = service.breakUrl(wrongUrl);
+		assertEquals("http://lix.in/-5836d7", url);
+	}
 }

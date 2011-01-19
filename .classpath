@@ -22,5 +22,13 @@
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mailapi.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/pop3.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/smtp.jar"/>
+	<classpathentry kind="lib" path="/Users/rodrigoramalho/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar">
+		<attributes>
+			<attribute name="maven.groupId" value="commons-httpclient"/>
+			<attribute name="maven.artifactId" value="commons-httpclient"/>
+			<attribute name="maven.version" value="3.1"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>
 </classpath>
