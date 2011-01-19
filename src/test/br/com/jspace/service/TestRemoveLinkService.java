@@ -16,6 +16,7 @@ import org.junit.Test;
    http://meggacelular.com/baixando/?link=rar.esooL_-_odatruF_ylleN/99448921/selif/moc.erahsdipar//:ptth
    http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3
    http://www.downsupremo.com/download/?url=687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d3330354f35323736
+   http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth
  */
 public class TestRemoveLinkService {
 
@@ -90,12 +91,22 @@ public class TestRemoveLinkService {
 	}
 
 	@Test
-	public void breakInvertedUrl() throws Exception{
+	public void breakReverseUrl() throws Exception{
 		String wrongUrl = "http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth";
 		String url = service.breakUrl(wrongUrl);
 
 		assertNotNull(url);
 		assertEquals("http://www.fileserve.com/file/mJ65hjS", url);
+	}
+	
+	@Test
+	public void breakReverseUrl2() throws Exception{
+		String wrongUrl = "http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth";
+		String url = service.breakUrl(wrongUrl);
+
+		assertNotNull(url);
+		assertEquals("http://www.megaupload.com/?d=LUK4KNI5", url);
+
 	}
 
 	@Test
