@@ -67,7 +67,7 @@ public class SendMail {
 		Transport tr;
 		try {
 			tr = session.getTransport("smtp"); //define smtp para transporte
-			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","a1b2c3e4f5g6");
+			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","hihihi");
 			msg.saveChanges(); // don't forget this
 			//envio da mensagem
 			tr.sendMessage(msg, msg.getAllRecipients());
