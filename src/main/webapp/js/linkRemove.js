@@ -1,22 +1,14 @@
 $(document).ready(function(){
-
 	$('input#link').focus();
 
 	$("#submeter").click(function(){
-
-		var link = $("#link").attr('value');
-
-		$.ajax({
-			url: "removeLink.do",
-			type: 'POST',
-			data: "link="+link,
-			beforeSend: function(){
-				$("#novoLink").html("atualizando...");
-			},
-			success: function(data){
-				$("#novoLink").html(data);
-			}
-		});
+		submitLink();
+	});
+	
+	$('input#link').keypress(function(event) {
+	  if (event.which == '13') {
+		  submitLink();
+	  }
 	});
 
 	$('#url').click(function(){
@@ -43,3 +35,19 @@ $(document).ready(function(){
 		$("#send_suggestion").removeClass();
 	}
 });
+
+function submitLink(){
+	var link = $("#link").attr('value');
+
+	$.ajax({
+		url: "removeLink.do",
+		type: 'POST',
+		data: "link="+link,
+		beforeSend: function(){
+			$("#novoLink").html("atualizando...");
+		},
+		success: function(data){
+			$("#novoLink").html(data);
+		}
+	});
+}
