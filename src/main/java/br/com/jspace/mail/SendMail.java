@@ -40,7 +40,7 @@ public class SendMail {
 		props.put("mail.smtp.host", mailSMTPServer);
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.user", from);
-		props.put("mail.debug", "true");
+		props.put("mail.debug", "false");
 		props.put("mail.smtp.port", mailSMTPServerPort); //porta
 		props.put("mail.smtp.socketFactory.port", mailSMTPServerPort); //mesma porta para o socket
 		props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
@@ -67,7 +67,7 @@ public class SendMail {
 		Transport tr;
 		try {
 			tr = session.getTransport("smtp"); //define smtp para transporte
-			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","hihihi");
+			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","a1b2c3e4f5g6");
 			msg.saveChanges(); // don't forget this
 			//envio da mensagem
 			tr.sendMessage(msg, msg.getAllRecipients());
