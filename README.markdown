@@ -8,11 +8,11 @@ Objetivo:
 Alguns exemplos de links que a aplicação remove:
 -------------------------------------------------
 
-  ##Simple url*
+  ##Simple url
 	   http://www.megaupload.com/?d=G6ZFTBJW
-  ##Complete url*
+  ##Complete url
    http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW
-  ##Reverse url*
+  ##Reverse url
    http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth
   ##Reverse com url direto depois do ?:
    http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth
