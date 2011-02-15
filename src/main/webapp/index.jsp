@@ -15,6 +15,9 @@
 			<img id="forkme" src="<%=request.getContextPath()%>/images/forkme_left_grey.png" alt="Fork me on GitHub" />
 		</a>
 		
+		<div id="msg_error" style="display: none"></div>
+		<div id="msg_notice" style="display: none"></div>
+		
 		<div id="inputs">
 			<table>
 				<tr>
@@ -32,6 +35,9 @@
 							Insira a url com o protetor de link abaixo, e o protetor de link será removido 
 							para que você possa continuar com o download.
 						</h3>
+						<p class="version">
+							Versão 1.0
+						</p>
 					</td>
 				</tr>
 			</table>
@@ -42,10 +48,11 @@
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 			
 			<p class="sendme">Não funcionou? Envie seu link/sugestão, para melhorarmos nossa app :)</p>
-			<span id="sug_msg"></span>	
 			
 			<div id='erro'>
-				<textarea id="suggestion" rows="5" cols="60%"></textarea><br/>
+				<input type="text" id="email" name="email" value="Seu email aqui" size="60%" class="suggestion"/><br/>
+				<textarea id="suggestion" rows="5" cols="60%" name="suggestion" class="suggestion">Sua sugestao aqui</textarea><br/>
+				
 				<img alt="ajax loader" id="load" src="images/ajax-loader.gif" />
 				<button id="send_suggestion" class="slick-black" style="width: 70px; font-size: 14px; margin-top: 3px;">Enviar</button>
 			</div>
