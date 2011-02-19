@@ -38,13 +38,21 @@
 						<p class="version">
 							Versão 1.0
 						</p>
+						<div id="donation">
+							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+								<input type="hidden" name="cmd" value="_s-xclick">
+								<input type="hidden" name="hosted_button_id" value="MSUGUFHLA79VS">
+								<input type="image" src="https://www.paypal.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos on-line!">
+								<img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+							</form>
+						</div>
 					</td>
 				</tr>
 			</table>
 			<input type="text" name="link" id="link" value="Insira seu link aqui" />
 			
 			<button id="submeter" class="slick-black">Converter</button>
-			
+
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 			
 			<p class="sendme">Não funcionou? Envie seu link/sugestão, para melhorarmos nossa app :)</p>

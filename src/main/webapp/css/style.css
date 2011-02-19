@@ -195,3 +195,7 @@ p.version {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
+
+#donation {
+	text-align: right;
+}
