@@ -33,5 +33,7 @@ Alguns exemplos de links que a aplicação remove:
 
 Acesso:
 -------
-	[Acesse a aplicaçãoi](http://www.jspace.com.br/link)
+	http://www.jspace.com.br/link
+
+        http://rodrigoramalho.org/link
 
