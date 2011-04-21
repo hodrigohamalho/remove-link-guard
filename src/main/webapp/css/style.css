@@ -89,6 +89,7 @@ textarea:focus {
 }
 
 button.slick-black {
+	cursor: pointer;
 	color: #fff;
 	font-family: "helvetica neue", helvetica, arial, sans-serif;
 	font-size: 16px;
@@ -120,6 +121,7 @@ button.slick-black {
 }
 
 button.slick-black:hover {
+	cursor: pointer;
 	background: #222;
 	background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000, rgba(20, 20, 20,
 		0.9) 0%, rgba(40, 40, 40, 0.9) 50%, rgba(50, 50, 50, 0.9) 50%,
@@ -131,6 +133,7 @@ button.slick-black:hover {
 }
 
 button.slick-black:active {
+	cursor: pointer;
 	background: #000;
 	background: -moz-linear-gradient(0% 100% 90deg, #FFFFFF, #000000, rgba(0, 0, 0, 0.9)
 		0%, rgba(10, 10, 10, 0.9) 50%, rgba(20, 20, 20, 0.9) 50%,

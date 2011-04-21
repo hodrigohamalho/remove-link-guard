@@ -55,7 +55,7 @@
 
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 			
-			<p class="sendme">Não funcionou? Envie seu link/sugestão, para melhorarmos nossa app :)</p>
+			<button class="slick-back sendme" style="cursor: pointer;">Não funcionou? Clique aqui e envie seu link/sugestão, para melhorarmos nossa app :)</button>
 			
 			<div id='erro'>
 				<input type="text" id="email" name="email" value="Seu email aqui" size="60%" class="suggestion"/><br/>

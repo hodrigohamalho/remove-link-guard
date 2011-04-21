@@ -6,28 +6,20 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-codec-1.4.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
-	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v7.0">
-		<attributes>
-			<attribute name="owner.project.facets" value="jst.web"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.launching.macosx.MacOSXType/JVM Contents (MacOS X Default)">
-		<attributes>
-			<attribute name="owner.project.facets" value="java"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/commons-lang-2.5.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/dsn.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/imap.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/mailapi.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/pop3.jar"/>
 	<classpathentry kind="lib" path="src/main/webapp/WEB-INF/lib/smtp.jar"/>
-	<classpathentry kind="lib" path="/Users/rodrigoramalho/.m2/repository/commons-httpclient/commons-httpclient/3.1/commons-httpclient-3.1.jar">
+	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0">
 		<attributes>
-			<attribute name="maven.groupId" value="commons-httpclient"/>
-			<attribute name="maven.artifactId" value="commons-httpclient"/>
-			<attribute name="maven.version" value="3.1"/>
-			<attribute name="maven.scope" value="compile"/>
+			<attribute name="owner.project.facets" value="jst.web"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_24">
+		<attributes>
+			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="output" path="src/main/webapp/WEB-INF/classes"/>

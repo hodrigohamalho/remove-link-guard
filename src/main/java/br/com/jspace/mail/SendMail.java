@@ -58,6 +58,7 @@ public class SendMail {
 			msg.setRecipient(Message.RecipientType.TO, new InternetAddress(to));
 			msg.setFrom(new InternetAddress(from));
 			msg.setSubject(subject);
+			message += "\n\n Enviado por: "+from;
 			msg.setContent(message,"text/plain");
 		} catch (Exception e) {
 			System.out.println(">> Erro: Completar Mensagem");
