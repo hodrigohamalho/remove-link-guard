@@ -155,8 +155,9 @@ img#logo {
 	border: 0;
 }
 
-p.sendme {
+button.sendme {
 	color: red;
+	margin-top: 20px;
 }
 
 p.version {
