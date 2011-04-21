@@ -31,6 +31,16 @@ public class TestRemoveLinkService {
 		assertNotNull(decoded);
 		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", decoded);
 	}
+	
+	@Test
+	public void decode2Base64() throws Exception{
+		// Vou testar soh o decode aqui.
+		String wrongUrl = "http://encurtador.com/?RVo1WEhOTjA9ZD8vbW9jLmRhb2xwdWFnZW0ud3d3Ly86cHR0aA==";
+		String url = service.breakUrl(wrongUrl);
+
+		assertNotNull(url);
+		assertEquals("http://www.megaupload.com/?d=0NNHX5ZE", url);
+	}
 
 	@Test
 	public void breakSimpleURL() throws Exception{
@@ -107,6 +117,15 @@ public class TestRemoveLinkService {
 		assertNotNull(url);
 		assertEquals("http://www.megaupload.com/?d=LUK4KNI5", url);
 
+	}
+	
+	@Test
+	public void breakReverseUrl3() throws Exception{
+		String wrongUrl = "http://www.baixeaquifilmes.com/link/?XSEC2VYW=d?/moc.daolpuagem.www//:ptth";
+		String url = service.breakUrl(wrongUrl);
+		
+		assertNotNull(url);
+		assertEquals("http://www.megaupload.com/?d=WYV2CESX", url);
 	}
 
 	@Test

@@ -8,6 +8,8 @@ import java.util.regex.Pattern;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
 
+import br.com.jspace.util.LinkUtil;
+
 
 
 public class RemoveLinkServiceImpl implements RemoveLinkService {
@@ -24,32 +26,32 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		}else if (!protectedUrl.contains("http://")){
 			throw new IllegalArgumentException("Url no formato inválido. 'necessita de http://'");
 		}
-		
+
 		url = parseUrl(protectedUrl.trim());
-		
+
 		if (url.startsWith(HTTP_ASCII)){
 			url = decodeAsciiLink(url);
 		}else if (Base64.isArrayByteBase64(url.getBytes())){
-			url = decodeBase64Url(url);
+			url = LinkUtil.decodeBase64(url);
 		}else if (url.contains("//:ptth")){
-			url = decodeInvertedUrl(url);
+			url = LinkUtil.decodeInvertedUrl(url);
 		}
 
 		return url;
 	}
 
-	private String decodeBase64Url(String url){
-		return new String(Base64.decodeBase64(url.getBytes()));
-	}
 
-	private String decodeInvertedUrl(String url){
-		StringBuilder newUrl = new StringBuilder(url);
-
-		return newUrl.reverse().toString();
-	}
 
 	private  String parseUrl(String protectedUrl){
 		String url = "";
+
+		if (LinkUtil.isBaixeAquiFilmes(protectedUrl)){
+			return protectedUrl.substring(protectedUrl.indexOf("/link/")+7);
+		}else if(LinkUtil.isEncurtador(protectedUrl)){
+			String base64Url = protectedUrl.substring(protectedUrl.indexOf("com/?")+5);
+			String reverseUrl = LinkUtil.decodeBase64(base64Url);
+			return LinkUtil.reverteUrl(reverseUrl);
+		}
 
 		if (!isASimpleProtectedUrl(protectedUrl) && containsSomethingBetweenQueryAndEqualsOrExclamation(protectedUrl)){
 			url = afterQueryHaveNumber(protectedUrl);
@@ -71,6 +73,8 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 		return url;
 	}
+
+
 
 	private String afterQueryHaveNumber(String protectedUrl) {
 		int query = protectedUrl.indexOf("?");
@@ -101,7 +105,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 	private boolean containsSomethingBetweenQueryAndEqualsOrExclamation(String protectedUrl){
 		Pattern p = null;
-		
+
 		if (protectedUrl.contains("?") && protectedUrl.contains("=")){
 			p = Pattern.compile(BEETWEN_QUERY_AND_EQUALS);
 		}else if (protectedUrl.contains("?") && protectedUrl.contains("!")){
@@ -119,15 +123,15 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	private String getStringAfterQueryAndEqualsOrExclamation(String protectedUrl){
 		String url = "";
 		String param = "";
-		
+
 		Pattern p = null;
 		if (protectedUrl.contains("=")){
 			p = Pattern.compile("\\?[\\w]++\\=");
 		}else if (protectedUrl.contains("!")){
 			p = Pattern.compile("\\?[\\w]++\\!");
 		}
-		
-		
+
+
 		Matcher m = p.matcher(protectedUrl);
 
 		while(m.find()){
