@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
+import org.apache.tomcat.util.buf.Ascii;
 
 import br.com.jspace.util.LinkUtil;
 
@@ -51,6 +52,9 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 			String base64Url = protectedUrl.substring(protectedUrl.indexOf("com/?")+5);
 			String reverseUrl = LinkUtil.decodeBase64(base64Url);
 			return LinkUtil.reverteUrl(reverseUrl);
+		}else if(LinkUtil.isProteLink(protectedUrl)){
+			String base64Url = protectedUrl.substring(protectedUrl.indexOf("/id/") + 4);
+			protectedUrl = LinkUtil.decodeBase64(base64Url);
 		}
 
 		if (!isASimpleProtectedUrl(protectedUrl) && containsSomethingBetweenQueryAndEqualsOrExclamation(protectedUrl)){
@@ -145,6 +149,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	}
 
 	private String decodeAsciiLink(String protectedUrl){
+
 		String[] ascii = new String[protectedUrl.length()/2];
 
 		// Quebra a string com a sequencia de caracteres ascii em duplas de caracteres.

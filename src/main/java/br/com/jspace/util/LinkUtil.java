@@ -27,6 +27,14 @@ public class LinkUtil {
 		return false;
 	}
 	
+	public static boolean isProteLink(String protectedUrl){
+		if (protectedUrl.contains("http://protelink.info")){
+			return true;
+		}
+		
+		return false;
+	}
+	
 	public static boolean isBaixeAquiFilmes(String protectedUrl){
 		if (protectedUrl.contains("baixeaquifilmes.com/link/")){
 			return true;

@@ -41,6 +41,17 @@ public class TestRemoveLinkService {
 		assertNotNull(url);
 		assertEquals("http://www.megaupload.com/?d=0NNHX5ZE", url);
 	}
+	
+	@Test
+	public void decode3Base64() throws Exception{
+		// Vou testar soh o decode aqui.
+		String wrongUrl = "http://protelink.info/ir/id/aHR0cDovL3d3dy5lYXN5LXNoYXJlZS5jb20vcHJvZ3JhbWFzLz91cmw9aHR0cDovL2RlcG9zaXRmaWxlcy5jb20vZmlsZXMvbGJrbzVuY3ho/";
+		String url = service.breakUrl(wrongUrl);
+
+		assertNotNull(url);
+		assertEquals("http://depositfiles.com/files/lbko5ncxh", url);
+	}
+	
 
 	@Test
 	public void breakSimpleURL() throws Exception{
@@ -165,6 +176,14 @@ public class TestRemoveLinkService {
 		
 		String url = service.breakUrl(wrongUrl);
 		assertEquals("http://www.megaupload.com/?d=305O5276", url);
+	}
+	
+	@Test
+	public void decode2AsciiLink() throws Exception{
+		String wrongUrl = "http://www.puxandolegal.com/ir/?id=687474703a2f2f616e6f6e796d6f7573652e6f72672f6367692d62696e2f616e6f6e2d7777772e6367692f687474703a2f2f7777772e66696c6573657276652e636f6d2f66696c652f56456463435255179346b794b36";
+		
+		String url = service.breakUrl(wrongUrl);
+		assertEquals("", url);
 	}
 	
 	@Test
