@@ -2,7 +2,7 @@ $(document).ready(function(){
 	$('#erro').hide();
 
 	$(".sendme").click(function(){
-		$('#erro').show("slow");
+		$('#erro').toggle("slow");
 	});
 	
 	$("#load").hide();

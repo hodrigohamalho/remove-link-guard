@@ -203,3 +203,29 @@ p.version {
 #donation {
 	text-align: right;
 }
+
+#midia{
+	width: 360px;
+	text-align: right;
+	float: right;
+}
+
+#facebook {
+	text-align: right;
+	padding-top: 20px;
+	float: left;
+}
+
+#twitter {
+	text-align: right;
+	float: left;
+}
+
+#bottom{
+	height: 100px;
+	display: block;
+}
+
+.clear{
+	clear: both;
+}

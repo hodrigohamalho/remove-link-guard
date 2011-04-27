@@ -1,11 +1,15 @@
 <html>
 
 <head>
-	<title>Remove Protetor de Link</title>
+	<title>Remove Protetores de Link</title>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css" type="text/css">
 	<meta http-equiv="Content-Type" content="text/html;charset=ISO8859-1" >
 	<meta name="description" content="Remover protetor de link. Baixar sem precisar cadastrar celular. Remover Protetor de Link. Burlar protetor de link." />
 	<meta name="keywords" content="desproteger link, remove protetor de link, remover link protegido, protetor de url, burlar protetor de link, baixar sem precisar cadastrar celular." />
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/js/linkRemove.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/js/suggestion.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -32,11 +36,11 @@
 							irritantes?
 						</h3>
 						<h3>
-							Insira a url com o protetor de link abaixo, e o protetor de link será removido 
+							Insira a url com o protetor de link abaixo, e esse será removido 
 							para que você possa continuar com o download.
 						</h3>
 						<p class="version">
-							Versão 2.0
+							Versão 2.2
 						</p>
 						<div id="donation">
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
@@ -55,21 +59,34 @@
 
 			<a href="" id="url" > <span id="novoLink"> </span> </a>
 			
-			<button class="slick-back sendme" style="cursor: pointer;">Não funcionou? Clique aqui e envie seu link/sugestão, para melhorarmos nossa app :)</button>
-			
-			<div id='erro'>
-				<input type="text" id="email" name="email" value="Seu email aqui" size="60%" class="suggestion"/><br/>
-				<textarea id="suggestion" rows="5" cols="60%" name="suggestion" class="suggestion">Sua sugestao aqui</textarea><br/>
+			<div id="bottom">
+				<button class="slick-back sendme" style="cursor: pointer;">Não funcionou? Clique aqui e envie seu link/sugestão, para melhorarmos nossa app :)</button>
 				
-				<img alt="ajax loader" id="load" src="images/ajax-loader.gif" />
-				<button id="send_suggestion" class="slick-black" style="width: 70px; font-size: 14px; margin-top: 3px;">Enviar</button>
+				<div id='erro'>
+					<input type="text" id="email" name="email" value="Seu email aqui" size="60%" class="suggestion"/><br/>
+					<textarea id="suggestion" rows="5" cols="60%" name="suggestion" class="suggestion">Sua sugestao aqui</textarea><br/>
+					
+					<img alt="ajax loader" id="load" src="images/ajax-loader.gif" />
+					<button id="send_suggestion" class="slick-black" style="width: 70px; font-size: 14px; margin-top: 3px;">Enviar</button>
+				</div>
+				
+				<div id="midia">
+					<div id="facebook" >
+						<iframe src="http://www.facebook.com/plugins/like.php?href=http://jspace.com.br/link&layout=standard&
+		show_faces=false&width=380&action=like&colorscheme=light&height=25&locale=pt_BR" scrolling="no" height="30" frameborder="0" style="border:none; allowtransparency='true'">
+						</iframe>
+					</div>
+					
+					<div id="twitter">
+						<a href="http://twitter.com/share" class="twitter-share-button" data-text="Acabei de fazer um download sossegado, graças ao desprotetor de links ;) #recomendo" data-count="vertical" data-via="hodrigohamalho">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+					</div>
+					
+					<div class="clear"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 	
-	<script src="<%=request.getContextPath()%>/js/jquery.js" type="text/javascript"></script>
-	<script src="<%=request.getContextPath()%>/js/linkRemove.js" type="text/javascript"></script>
-	<script src="<%=request.getContextPath()%>/js/suggestion.js" type="text/javascript"></script>
 	<script type="text/javascript">
 	  var _gaq = _gaq || [];
 	  _gaq.push(['_setAccount', 'UA-20624035-1']);

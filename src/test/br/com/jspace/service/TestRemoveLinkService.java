@@ -187,6 +187,14 @@ public class TestRemoveLinkService {
 	}
 	
 	@Test
+	public void decode3AsciiLink() throws Exception{
+		String wrongUrl = "http://www.vinxp.com/download/d/?t=48445456202623383231313b2057574520536d61636b646f776e202832322f30342f313129";
+		
+		String url = service.breakUrl(wrongUrl);
+		assertEquals("http://www.vinxp.com/hdtv-wwe-smackdown-220411", url);
+	}
+	
+	@Test
 	public void breakUrlWithParamBetweenQueryAndExclamation() throws Exception{
 		String wrongUrl = "http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3";
 		

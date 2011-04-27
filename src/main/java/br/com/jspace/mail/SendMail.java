@@ -47,7 +47,7 @@ public class SendMail {
 		props.put("mail.smtp.socketFactory.fallback", "false");
 
 		SimpleAuth auth = null;
-		auth = new SimpleAuth ("removelinkguard@gmail.com","a1b2c3e4f5g6");
+		auth = new SimpleAuth ("removelinkguard@gmail.com","****");
 
 		Session session = Session.getDefaultInstance(props, auth);
 //		session.setDebug(true); //Habilita o LOG das ações executadas durante o envio do email
@@ -68,7 +68,7 @@ public class SendMail {
 		Transport tr;
 		try {
 			tr = session.getTransport("smtp"); //define smtp para transporte
-			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","a1b2c3e4f5g6");
+			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","***");
 			msg.saveChanges(); // don't forget this
 			//envio da mensagem
 			tr.sendMessage(msg, msg.getAllRecipients());
