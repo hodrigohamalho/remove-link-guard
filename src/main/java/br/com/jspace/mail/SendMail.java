@@ -12,6 +12,9 @@ public class SendMail {
 
 	private String mailSMTPServer;
 	private String mailSMTPServerPort;
+	
+	private String username = "removelinkguard@gmail.com";
+	private String password = "a1b2c3e4f5g6";
 
 	// Default gmail.
 	public SendMail() { 
@@ -47,7 +50,7 @@ public class SendMail {
 		props.put("mail.smtp.socketFactory.fallback", "false");
 
 		SimpleAuth auth = null;
-		auth = new SimpleAuth ("removelinkguard@gmail.com","****");
+		auth = new SimpleAuth (username, password);
 
 		Session session = Session.getDefaultInstance(props, auth);
 //		session.setDebug(true); //Habilita o LOG das ações executadas durante o envio do email
@@ -68,7 +71,7 @@ public class SendMail {
 		Transport tr;
 		try {
 			tr = session.getTransport("smtp"); //define smtp para transporte
-			tr.connect(mailSMTPServer, "removelinkguard@gmail.com","***");
+			tr.connect(mailSMTPServer, username, password);
 			msg.saveChanges(); // don't forget this
 			//envio da mensagem
 			tr.sendMessage(msg, msg.getAllRecipients());
