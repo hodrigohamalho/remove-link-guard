@@ -8,6 +8,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * 
+ * @author rodrigoramalho
+ *
+ */
 public class SendMail {
 
 	private String mailSMTPServer;

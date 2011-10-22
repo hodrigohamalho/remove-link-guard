@@ -8,6 +8,11 @@ import org.apache.commons.lang.StringUtils;
 
 import br.com.jspace.util.LinkUtil;
 
+/**
+ * 
+ * @author rodrigoramalho
+ *
+ */
 public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 	String BEETWEN_QUERY_AND_EQUALS = "\\?[\\w]++\\=";

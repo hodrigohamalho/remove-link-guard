@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.jspace.service.RemoveLinkService;
 import br.com.jspace.service.RemoveLinkServiceImpl;
 
+/**
+ * 
+ * @author rodrigoramalho
+ *
+ */
 public class RemoveLinkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

@@ -3,6 +3,11 @@ package br.com.jspace.mail;
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;
 
+/**
+ * 
+ * @author rodrigoramalho
+ *
+ */
 public class SimpleAuth extends Authenticator {
 	public String username = null;
 	public String password = null;

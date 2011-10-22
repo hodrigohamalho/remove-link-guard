@@ -5,9 +5,18 @@ import java.util.List;
 
 import org.apache.commons.codec.binary.Base64;
 
+/**
+ * 
+ * @author rodrigoramalho
+ *
+ */
 public class LinkUtil {
 	
 	public static String decodeBase64(String url) {
+		if (url.contains("aHR0")){
+			url = url.substring(url.indexOf("aHR0"));
+		}
+		
 		return new String(Base64.decodeBase64(url.getBytes()));
 	}
 

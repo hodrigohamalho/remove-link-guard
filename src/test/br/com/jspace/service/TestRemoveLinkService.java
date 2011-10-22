@@ -17,6 +17,8 @@ import org.junit.Test;
    http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3
    http://www.downsupremo.com/download/?url=687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d3330354f35323736
    http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth
+   
+ * @author rodrigoramalho
  */
 public class TestRemoveLinkService {
 
@@ -179,14 +181,6 @@ public class TestRemoveLinkService {
 	}
 	
 	@Test
-	public void decode2AsciiLink() throws Exception{
-		String wrongUrl = "http://www.puxandolegal.com/ir/?id=687474703a2f2f616e6f6e796d6f7573652e6f72672f6367692d62696e2f616e6f6e2d7777772e6367692f687474703a2f2f7777772e66696c6573657276652e636f6d2f66696c652f56456463435255179346b794b36";
-		
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("", url);
-	}
-	
-	@Test
 	public void decode3AsciiLink() throws Exception{
 		String wrongUrl = "http://www.vinxp.com/download/d/?t=48445456202623383231313b2057574520536d61636b646f776e202832322f30342f313129";
 		
@@ -200,5 +194,13 @@ public class TestRemoveLinkService {
 		
 		String url = service.breakUrl(wrongUrl);
 		assertEquals("http://lix.in/-5836d7", url);
+	}
+	
+	@Test
+	public void breakBaixarFilmesDublados() throws Exception{
+		String wrongUrl = "http://www.baixarfilmesdublados.info/download/?url=vkibahjdvbdvhbskbskdaHR0cDovL3d3dy5tZWdhdXBsb2FkLmNvbS8/ZD1UMVY2NklHUg==";
+		
+		String url = service.breakUrl(wrongUrl);
+		assertEquals("http://www.megaupload.com/?d=T1V66IGR", url);
 	}
 }
