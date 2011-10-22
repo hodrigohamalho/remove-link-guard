@@ -63,6 +63,15 @@ public class TestRemoveLinkService {
 		assertNotNull(url);
 		assertEquals(wrongUrl, url);
 	}
+	
+	@Test
+	public void breakSimpleUR2L() throws Exception{
+		String wrongUrl = "http://indica.celularbr.com/?http://ul.to/6i76b0tz";
+		String url = service.breakUrl(wrongUrl);
+
+		assertNotNull(url);
+		assertEquals("http://ul.to/6i76b0tz", url);
+	}
 
 	@Test 
 	public void breakCommomProtectedUrl() throws Exception{

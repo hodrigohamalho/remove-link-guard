@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
 
 import br.com.jspace.util.LinkUtil;
 
@@ -47,10 +48,9 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		if (LinkUtil.isBaixeAquiFilmes(protectedUrl)) {
 			return protectedUrl.substring(protectedUrl.indexOf("/link/") + 7);
 		} else if (LinkUtil.isEncurtador(protectedUrl)) {
-			String base64Url = protectedUrl.substring(protectedUrl
-					.indexOf("com/?") + 5);
+			String base64Url = protectedUrl.substring(protectedUrl.indexOf("com/?") + 5);
 			String reverseUrl = LinkUtil.decodeBase64(base64Url);
-			
+
 			return LinkUtil.reverteUrl(reverseUrl);
 		} else if (LinkUtil.isProteLink(protectedUrl)) {
 			String base64Url = protectedUrl.substring(protectedUrl.indexOf("/id/") + 4);
@@ -58,13 +58,15 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		} else if (LinkUtil.isVinXp(protectedUrl)){
 			String downloadTitle = LinkUtil.decodeAsciiLink(protectedUrl.substring(protectedUrl.indexOf("/d/") + 6));
 			downloadTitle = LinkUtil.vinXpRemoveInvalidChars(downloadTitle);
-			
+
 			return "http://www.vinxp.com/"+downloadTitle;
 		}
 
 		if (!isASimpleProtectedUrl(protectedUrl)
 				&& containsSomethingBetweenQueryAndEqualsOrExclamation(protectedUrl)) {
+
 			url = afterQueryHaveNumber(protectedUrl);
+
 			if (url == null) {
 				url = getStringAfterQueryAndEqualsOrExclamation(protectedUrl);
 
@@ -76,7 +78,11 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 				}
 			}
 		} else if (protectedUrl.contains("http://")) {
-			url = protectedUrl;
+			if (StringUtils.countMatches(protectedUrl, "http://") == 2){
+				url = protectedUrl.substring(protectedUrl.lastIndexOf("http://"));
+			}else{
+				url = protectedUrl;
+			}
 		} else {
 			throw new IllegalArgumentException("Link inválido");
 		}
@@ -88,13 +94,11 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		int query = protectedUrl.indexOf("?");
 		String afterQuery = protectedUrl.substring(query + 1);
 
-		try {
-			Integer.parseInt(Character.toString(afterQuery.charAt(0)));
-		} catch (NumberFormatException e) {
-			return null;
+		if (NumberUtils.isNumber(Character.toString(afterQuery.charAt(0)))){
+			return afterQuery;
 		}
 
-		return afterQuery;
+		return null;
 	}
 
 	private boolean isASimpleProtectedUrl(String protectedUrl) {
@@ -102,10 +106,8 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 
 		int i = StringUtils.countMatches(protectedUrl, "http://");
 
-		if (i == 1
-				&& (protectedUrl.contains(":ptth")
-						|| protectedUrl.contains(HTTP_ASCII) || StringUtils
-						.countMatches(protectedUrl, "/") > 3)) {
+		if (i == 1 && (protectedUrl.contains(":ptth") || 
+				protectedUrl.contains(HTTP_ASCII) || StringUtils.countMatches(protectedUrl, "/") > 3)) {
 			simpleProtectedUrl = false;
 		} else if (i == 1) {
 			simpleProtectedUrl = true;
@@ -123,10 +125,13 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		} else if (protectedUrl.contains("?") && protectedUrl.contains("!")) {
 			p = Pattern.compile(BEETWEN_QUERY_AND_EXCLAMATION);
 		}
-		Matcher m = p.matcher(protectedUrl.toLowerCase());
 
-		if (m.find()) {
-			return true;
+		if (p != null){
+			Matcher m = p.matcher(protectedUrl.toLowerCase());
+
+			if (m.find()) {
+				return true;
+			}
 		}
 
 		return false;
