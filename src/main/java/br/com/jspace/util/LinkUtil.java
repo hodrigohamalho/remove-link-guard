@@ -11,6 +11,25 @@ import org.apache.commons.codec.binary.Base64;
  *
  */
 public class LinkUtil {
+
+	public static List<String> urlSeparator = new ArrayList<String>();
+	
+	/**
+	 * Put the most embracing rules on top.
+	 */
+	static{
+		urlSeparator.add("/?url=http://yess.me/ir/id/");
+		urlSeparator.add("/?url=");
+		urlSeparator.add("/ir/id/");
+		urlSeparator.add("/?link=");
+		urlSeparator.add("/?go!");
+		urlSeparator.add("/filmesquentes/?");
+		urlSeparator.add("/link/?");
+		urlSeparator.add("/download/?");
+		
+		urlSeparator.add("/?d=");
+		urlSeparator.add("/?");
+	}
 	
 	public static String decodeBase64(String url) {
 		if (url.contains("aHR0")){

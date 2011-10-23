@@ -1,11 +1,6 @@
 package br.com.jspace.service;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import org.apache.commons.codec.binary.Base64;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
 
 import br.com.jspace.util.LinkUtil;
 
@@ -23,11 +18,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	public String breakUrl(String protectedUrl) {
 		String url = "";
 
-		if (protectedUrl.trim().contains(" ")) {
-			throw new IllegalArgumentException("Link inválido");
-		} else if (!protectedUrl.contains("http://")) {
-			throw new IllegalArgumentException("Url no formato inválido. 'necessita de http://'");
-		}
+		validate(protectedUrl);
 
 		url = parseUrl(protectedUrl.trim());
 
@@ -35,129 +26,34 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 			url = LinkUtil.decodeAsciiLink(url);
 		} else if (Base64.isArrayByteBase64(url.getBytes())) {
 			url = LinkUtil.decodeBase64(url);
-		} else if (url.contains("//:ptth")) {
+		}
+		
+		if (url.endsWith("//:ptth")) {
 			url = LinkUtil.decodeInvertedUrl(url);
 		}
 
 		return url;
 	}
 
-	private String parseUrl(String protectedUrl) {
-		String url = "";
-
-		if (LinkUtil.isBaixeAquiFilmes(protectedUrl)) {
-			return protectedUrl.substring(protectedUrl.indexOf("/link/") + 7);
-		} else if (LinkUtil.isEncurtador(protectedUrl)) {
-			String base64Url = protectedUrl.substring(protectedUrl.indexOf("com/?") + 5);
-			String reverseUrl = LinkUtil.decodeBase64(base64Url);
-
-			return LinkUtil.reverteUrl(reverseUrl);
-		} else if (LinkUtil.isProteLink(protectedUrl)) {
-			String base64Url = protectedUrl.substring(protectedUrl.indexOf("/id/") + 4);
-			protectedUrl = LinkUtil.decodeBase64(base64Url);
-		} else if (LinkUtil.isVinXp(protectedUrl)){
-			String downloadTitle = LinkUtil.decodeAsciiLink(protectedUrl.substring(protectedUrl.indexOf("/d/") + 6));
-			downloadTitle = LinkUtil.vinXpRemoveInvalidChars(downloadTitle);
-
-			return "http://www.vinxp.com/"+downloadTitle;
-		}
-
-		if (!isASimpleProtectedUrl(protectedUrl)
-				&& containsSomethingBetweenQueryAndEqualsOrExclamation(protectedUrl)) {
-
-			url = afterQueryHaveNumber(protectedUrl);
-
-			if (url == null) {
-				url = getStringAfterQueryAndEqualsOrExclamation(protectedUrl);
-
-				if (protectedUrl.endsWith("=/")) {
-					Pattern p = Pattern.compile("(\\w)*=/");
-					Matcher m = p.matcher(protectedUrl);
-					m.find();
-					url = m.group();
-				}
-			}
-		} else if (protectedUrl.contains("http://")) {
-			if (StringUtils.countMatches(protectedUrl, "http://") == 2){
-				url = protectedUrl.substring(protectedUrl.lastIndexOf("http://"));
-			}else{
-				url = protectedUrl;
-			}
-		} else {
+	private void validate(String protectedUrl) {
+		if (protectedUrl.trim().contains(" ")) {
 			throw new IllegalArgumentException("Link inválido");
+		} else if (!protectedUrl.contains("http://")) {
+			throw new IllegalArgumentException("Url no formato inválido. 'necessita de http://'");
 		}
-
-		return url;
 	}
 
-	private String afterQueryHaveNumber(String protectedUrl) {
-		int query = protectedUrl.indexOf("?");
-		String afterQuery = protectedUrl.substring(query + 1);
+	public String parseUrl(String protectedUrl) {
+		String url = "";
 
-		if (NumberUtils.isNumber(Character.toString(afterQuery.charAt(0)))){
-			return afterQuery;
-		}
-
-		return null;
-	}
-
-	private boolean isASimpleProtectedUrl(String protectedUrl) {
-		boolean simpleProtectedUrl = false;
-
-		int i = StringUtils.countMatches(protectedUrl, "http://");
-
-		if (i == 1 && (protectedUrl.contains(":ptth") || 
-				protectedUrl.contains(HTTP_ASCII) || StringUtils.countMatches(protectedUrl, "/") > 3)) {
-			simpleProtectedUrl = false;
-		} else if (i == 1) {
-			simpleProtectedUrl = true;
-		}
-
-		return simpleProtectedUrl;
-	}
-
-	private boolean containsSomethingBetweenQueryAndEqualsOrExclamation(
-			String protectedUrl) {
-		Pattern p = null;
-
-		if (protectedUrl.contains("?") && protectedUrl.contains("=")) {
-			p = Pattern.compile(BEETWEN_QUERY_AND_EQUALS);
-		} else if (protectedUrl.contains("?") && protectedUrl.contains("!")) {
-			p = Pattern.compile(BEETWEN_QUERY_AND_EXCLAMATION);
-		}
-
-		if (p != null){
-			Matcher m = p.matcher(protectedUrl.toLowerCase());
-
-			if (m.find()) {
-				return true;
+		for (String urlSeparator : LinkUtil.urlSeparator){
+			if (protectedUrl.contains(urlSeparator) && urlSeparator != "/?"){
+				int urlStart = protectedUrl.indexOf(urlSeparator);
+				url = protectedUrl.substring(urlStart + urlSeparator.length());
+				break;
 			}
 		}
-
-		return false;
-	}
-
-	private String getStringAfterQueryAndEqualsOrExclamation(String protectedUrl) {
-		String url = "";
-		String param = "";
-
-		Pattern p = null;
-		if (protectedUrl.contains("=")) {
-			p = Pattern.compile("\\?[\\w]++\\=");
-		} else if (protectedUrl.contains("!")) {
-			p = Pattern.compile("\\?[\\w]++\\!");
-		}
-
-		Matcher m = p.matcher(protectedUrl);
-
-		while (m.find()) {
-			param = m.group();
-			break;
-		}
-
-		url = protectedUrl.substring(protectedUrl.indexOf(param)
-				+ param.length());
-
+		
 		return url;
 	}
 }
