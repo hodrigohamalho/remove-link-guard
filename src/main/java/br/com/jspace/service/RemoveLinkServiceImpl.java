@@ -1,7 +1,9 @@
 package br.com.jspace.service;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang.StringUtils;
 
+import br.com.jspace.util.CustomLinks;
 import br.com.jspace.util.LinkUtil;
 
 /**
@@ -16,23 +18,56 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	String HTTP_ASCII = "687474703";
 
 	public String breakUrl(String protectedUrl) {
-		String url = "";
-
 		validate(protectedUrl);
 
-		url = parseUrl(protectedUrl.trim());
+		do{
+			if(CustomLinks.isCustomLink(protectedUrl)){
+				protectedUrl = decryptCustomProtectors(protectedUrl);
+			}else{
+				protectedUrl = parseUrl(protectedUrl.trim());
+				protectedUrl = descryptUrl(protectedUrl);
+			}
+		}while(isNestedUrl(protectedUrl));
 
-		if (url.startsWith(HTTP_ASCII)) {
-			url = LinkUtil.decodeAsciiLink(url);
-		} else if (Base64.isArrayByteBase64(url.getBytes())) {
-			url = LinkUtil.decodeBase64(url);
-		}
-		
-		if (url.endsWith("//:ptth")) {
-			url = LinkUtil.decodeInvertedUrl(url);
-		}
+		return protectedUrl;
+	}
+
+	public String parseUrl(String protectedUrl) {
+		String url = "";
+
+		do{
+			url = extractSignificantUrl(protectedUrl, url);
+		}while(isNestedUrl(url));
 
 		return url;
+	}
+
+	private String descryptUrl(String protectedUrl) {
+		// Don't put elseif in this ifs sequence.
+		if (protectedUrl.startsWith(HTTP_ASCII)) {
+			protectedUrl = LinkUtil.decodeAsciiLink(protectedUrl);
+		}
+
+		if (Base64.isArrayByteBase64(protectedUrl.getBytes())) {
+			protectedUrl = LinkUtil.decodeBase64(protectedUrl);
+		}
+
+		if (protectedUrl.endsWith("//:ptth")) {
+			protectedUrl = LinkUtil.decodeInvertedUrl(protectedUrl);
+		}
+
+		return protectedUrl;
+	}
+
+	private String decryptCustomProtectors(String protectedUrl) {
+		if (CustomLinks.isVinXp(protectedUrl)){
+			String encryptedTitle = parseUrl(protectedUrl.trim());
+			String downloadTitle = LinkUtil.decodeAsciiLink(encryptedTitle);
+			downloadTitle = CustomLinks.vinXpRemoveInvalidChars(downloadTitle);
+			protectedUrl = "http://www.vinxp.com/"+downloadTitle;
+		}
+		
+		return protectedUrl;
 	}
 
 	private void validate(String protectedUrl) {
@@ -43,17 +78,18 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		}
 	}
 
-	public String parseUrl(String protectedUrl) {
-		String url = "";
+	private boolean isNestedUrl(String protectedUrl) {
+		return StringUtils.countMatches(protectedUrl, "http://") > 1 || ((protectedUrl.contains("http://") && protectedUrl.contains("//:ptth")));
+	}
 
+	private String extractSignificantUrl(String protectedUrl, String url) {
 		for (String urlSeparator : LinkUtil.urlSeparator){
-			if (protectedUrl.contains(urlSeparator) && urlSeparator != "/?"){
+			if (protectedUrl.contains(urlSeparator)){
 				int urlStart = protectedUrl.indexOf(urlSeparator);
 				url = protectedUrl.substring(urlStart + urlSeparator.length());
 				break;
 			}
 		}
-		
 		return url;
 	}
 }

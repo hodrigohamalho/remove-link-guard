@@ -13,7 +13,7 @@ import org.apache.commons.codec.binary.Base64;
 public class LinkUtil {
 
 	public static List<String> urlSeparator = new ArrayList<String>();
-	
+
 	/**
 	 * Put the most embracing rules on top.
 	 */
@@ -26,16 +26,17 @@ public class LinkUtil {
 		urlSeparator.add("/filmesquentes/?");
 		urlSeparator.add("/link/?");
 		urlSeparator.add("/download/?");
-		
+		urlSeparator.add("/?t=");
+
 		urlSeparator.add("/?d=");
 		urlSeparator.add("/?");
 	}
-	
+
 	public static String decodeBase64(String url) {
 		if (url.contains("aHR0")){
 			url = url.substring(url.indexOf("aHR0"));
 		}
-		
+
 		return new String(Base64.decodeBase64(url.getBytes()));
 	}
 
@@ -49,7 +50,7 @@ public class LinkUtil {
 		StringBuilder sb = new StringBuilder(url);
 		return sb.reverse().toString();
 	}
-	
+
 	public static String decodeAsciiLink(String asciiCoded){
 
 		String[] ascii = new String[asciiCoded.length()/2];
@@ -79,49 +80,5 @@ public class LinkUtil {
 		}
 
 		return link.toString();
-	}
-	
-	public static boolean isEncurtador(String protectedUrl) {
-		if (protectedUrl.contains("http://encurtador.com")) {
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public static boolean isProteLink(String protectedUrl){
-		if (protectedUrl.contains("http://protelink.info")){
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public static boolean isBaixeAquiFilmes(String protectedUrl){
-		if (protectedUrl.contains("baixeaquifilmes.com/link/")){
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public static boolean isVinXp(String protectedUrl){
-		if (protectedUrl.contains("www.vinxp.com/download/d/")){
-			return true;
-		}
-		
-		return false;
-	}
-	
-	public static String vinXpRemoveInvalidChars(String title){
-		// Remove todos os caracteres invalidos da url
-		title = title.replace(" &#8211;", "");
-		title = title.replace("(","");
-		title = title.replace(")","");
-		title = title.replace("/","");
-		title = title.replace(" ","-");
-		title = title.toLowerCase();
-		
-		return title;
 	}
 }
