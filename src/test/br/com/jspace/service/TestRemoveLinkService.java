@@ -80,7 +80,7 @@ public class TestRemoveLinkService {
 
 	@Test 
 	public void breakCommomProtectedUrl() throws Exception{
-		breakProtectedUrl("http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW", "http://ul.to/6i76b0tz");
+		breakProtectedUrl("http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW", "http://www.megaupload.com/?d=G6ZFTBJW");
 	}
 
 	@Test
@@ -111,55 +111,33 @@ public class TestRemoveLinkService {
 
 	@Test
 	public void breakReverseUrl() throws Exception{
-		String wrongUrl = "http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.fileserve.com/file/mJ65hjS", url);
+		breakProtectedUrl("http://fire.tiozao.net/?url=Sjh56Jm/elif/moc.evreselif.www//:ptth", "http://www.fileserve.com/file/mJ65hjS");
 	}
 
 	@Test
 	public void breakReverseUrl2() throws Exception{
-		String wrongUrl = "http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.megaupload.com/?d=LUK4KNI5", url);
-
+		breakProtectedUrl("http://www.celularbr.com/filmesquentes/?5INK4KUL=d?/moc.daolpuagem.www//:ptth", "http://www.megaupload.com/?d=LUK4KNI5");
 	}
 
 	@Test
 	public void breakReverseUrl3() throws Exception{
-		String wrongUrl = "http://www.baixeaquifilmes.com/link/?XSEC2VYW=d?/moc.daolpuagem.www//:ptth";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.megaupload.com/?d=WYV2CESX", url);
+		breakProtectedUrl("http://www.baixeaquifilmes.com/link/?XSEC2VYW=d?/moc.daolpuagem.www//:ptth", "http://www.megaupload.com/?d=WYV2CESX");
 	}
 
-	@Test
+	@Test(expected=Exception.class)
 	public void breakComplexUrl() throws Exception{
-		try {
-			String wrongUrl = "http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/  = \"http://www.2shared.com/video/MxQbakWF/OAPDFEI.html\"";
-			service.breakUrl(wrongUrl);
-
-			fail("url should throw exception");
-		} catch (Exception e) {
-		}
+		breakProtectedUrl("http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/  = \"http://www.2shared.com/video/MxQbakWF/OAPDFEI.html\"", "http://www.megaupload.com/?");
 	}
 
 	@Test
 	public void breakUrlThatNotContainsTheWordUrl() throws Exception{
-		String wrongUrl = "http://fire.tiozao.net/?link=Sjh56Jm/elif/moc.evreselif.www//:ptth";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.fileserve.com/file/mJ65hjS", url);
+		breakProtectedUrl("http://fire.tiozao.net/?link=Sjh56Jm/elif/moc.evreselif.www//:ptth", "http://www.fileserve.com/file/mJ65hjS");
 	}
 
 	@Test
 	public void breakUrlWithoutHttp(){
 		String wrongUrl = "www.google.com.br";
+		
 		try{
 			service.breakUrl(wrongUrl);
 			fail("url should throw exception");
@@ -170,43 +148,34 @@ public class TestRemoveLinkService {
 
 	@Test
 	public void decodeAsciiLink() throws Exception{
-		String wrongUrl = "http://www.downsupremo.com/download/?url=687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d3330354f35323736";
-
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("http://www.megaupload.com/?d=305O5276", url);
+		breakProtectedUrl("http://www.downsupremo.com/download/?url=687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d3330354f35323736", "http://www.megaupload.com/?d=305O5276");
 	}
 
 	@Test
 	public void decode3AsciiLink() throws Exception{
-		String wrongUrl = "http://www.vinxp.com/download/d/?t=48445456202623383231313b2057574520536d61636b646f776e202832322f30342f313129";
-
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("http://www.vinxp.com/hdtv-wwe-smackdown-220411", url);
+		breakProtectedUrl("http://www.vinxp.com/download/d/?t=48445456202623383231313b2057574520536d61636b646f776e202832322f30342f313129", "http://www.vinxp.com/hdtv-wwe-smackdown-220411");
 	}
 
 	@Test
 	public void breakUrlWithParamBetweenQueryAndExclamation() throws Exception{
-		String wrongUrl = "http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3";
-
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("http://lix.in/-5836d7", url);
+		breakProtectedUrl("http://www.protetordelinks.com/links/?go!aHR0cDovL2xpeC5pbi8tNTgzNmQ3", "http://lix.in/-5836d7");
 	}
 
 	@Test
 	public void breakBaixarFilmesDublados() throws Exception{
-		String wrongUrl = "http://www.baixarfilmesdublados.info/download/?url=vkibahjdvbdvhbskbskdaHR0cDovL3d3dy5tZWdhdXBsb2FkLmNvbS8/ZD1UMVY2NklHUg==";
-
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("http://www.megaupload.com/?d=T1V66IGR", url);
+		breakProtectedUrl("http://www.baixarfilmesdublados.info/download/?url=vkibahjdvbdvhbskbskdaHR0cDovL3d3dy5tZWdhdXBsb2FkLmNvbS8/ZD1UMVY2NklHUg==", "http://www.megaupload.com/?d=T1V66IGR");
 	}
 
 	@Test
 	public void test() throws Exception{
-		String wrongUrl = "http://www.protetordownloads.info/download/?lmth.rar.llluabinac.dsahjkdsjakahcek.sebereht.rodaderp/356d833/52704438/ld/moc.eliftoh//:ptth";
-
-		String url = service.breakUrl(wrongUrl);
-		assertEquals("http://hotfile.com/dl/83440725/338d653/predador.therebes.kechakajsdkjhasd.canibaulll.rar.html", url);
-
+		breakProtectedUrl("http://www.protetordownloads.info/download/?lmth.rar.llluabinac.dsahjkdsjakahcek.sebereht.rodaderp/356d833/52704438/ld/moc.eliftoh//:ptth", "http://hotfile.com/dl/83440725/338d653/predador.therebes.kechakajsdkjhasd.canibaulll.rar.html");
 	}
+	
+	@Test
+	public void brekAscii() throws Exception{
+		breakProtectedUrl("http://protetordelink.tv/download/protetorbtf/350/687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d4d545037594d3031", "http://www.megaupload.com/?d=MTP7YM01");
+	}
+	
+	
 
 }

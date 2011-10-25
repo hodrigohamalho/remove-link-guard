@@ -26,6 +26,7 @@ public class LinkUtil {
 		urlSeparator.add("/filmesquentes/?");
 		urlSeparator.add("/link/?");
 		urlSeparator.add("/download/?");
+		urlSeparator.add("/350/");
 		urlSeparator.add("/?t=");
 
 		urlSeparator.add("/?d=");
