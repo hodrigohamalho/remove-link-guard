@@ -41,9 +41,22 @@ public class TestRemoveLinkService {
 	}
 
 	@Test
-	public void breakUrl() throws Exception{
-		// Base 64
+	public void break0Base64() throws Exception{
+		breakProtectedUrl("http://www.loucosporsoftwares.com/protetor2/?aHR0cDovL3JhcGlkc2hhcmUuY29tL2ZpbGVzLzE4MTE5MzIzOC9SZXZpc3RhX0VsZWt0b3JfLV9KYW5laXJvX2RlXzIwMDkud3d3LnRoZWdlbml1cy5", "http://rapidshare.com/files/181193238/Revista_Elektor_-_Janeiro_de_2009.www.thegenius.");
+	}
+	
+	@Test
+	public void break1Base64() throws Exception{
 		breakProtectedUrl("http://encurtador.com/?RVo1WEhOTjA9ZD8vbW9jLmRhb2xwdWFnZW0ud3d3Ly86cHR0aA==", "http://www.megaupload.com/?d=0NNHX5ZE");
+	}
+	
+	@Test
+	public void break2Base64() throws Exception{
+		breakProtectedUrl("http://encurtador.com/?RVo1WEhOTjA9ZD8vbW9jLmRhb2xwdWFnZW0ud3d3Ly86cHR0aA==", "http://www.megaupload.com/?d=0NNHX5ZE");
+	}
+	
+	@Test
+	public void break3Base64() throws Exception{
 		breakProtectedUrl("http://protelink.info/ir/id/aHR0cDovL3d3dy5lYXN5LXNoYXJlZS5jb20vcHJvZ3JhbWFzLz91cmw9aHR0cDovL2RlcG9zaXRmaWxlcy5jb20vZmlsZXMvbGJrbzVuY3ho/", "http://depositfiles.com/files/lbko5ncxh");
 	}
 
@@ -57,47 +70,27 @@ public class TestRemoveLinkService {
 
 	@Test
 	public void breakSimpleURL() throws Exception{
-		String wrongUrl = "http://www.megaupload.com/?d=G6ZFTBJW";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals(wrongUrl, url);
+		breakProtectedUrl("http://www.megaupload.com/?d=G6ZFTBJW", "http://www.megaupload.com/?d=G6ZFTBJW");
 	}
 
 	@Test
 	public void breakSimpleUR2L() throws Exception{
-		String wrongUrl = "http://indica.celularbr.com/?http://ul.to/6i76b0tz";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://ul.to/6i76b0tz", url);
+		breakProtectedUrl("http://indica.celularbr.com/?http://ul.to/6i76b0tz", "http://ul.to/6i76b0tz");
 	}
 
 	@Test 
 	public void breakCommomProtectedUrl() throws Exception{
-		String wrongUrl = "http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.megaupload.com/?d=G6ZFTBJW", url);
+		breakProtectedUrl("http://clubedodownload.info/link/?url=http://www.megaupload.com/?d=G6ZFTBJW", "http://ul.to/6i76b0tz");
 	}
 
 	@Test
 	public void breakBase64Url() throws Exception{
-		String wrongUrl = "http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", url);
+		breakProtectedUrl("http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/", "http://www.2shared.com/video/MxQbakWF/OAPDFEI.html");
 	}
 
 	@Test
 	public void breakUrlWithBlankSpaces() throws Exception{
-		String wrongUrl = "  http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/  ";
-		String url = service.breakUrl(wrongUrl);
-
-		assertNotNull(url);
-		assertEquals("http://www.2shared.com/video/MxQbakWF/OAPDFEI.html", url);
+		breakProtectedUrl("http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy4yc2hhcmVkLmNvbS92aWRlby9NeFFiYWtXRi9PQVBERkVJLmh0bWw=/", "http://www.2shared.com/video/MxQbakWF/OAPDFEI.html");
 	}
 
 	@Test(expected=Exception.class)
