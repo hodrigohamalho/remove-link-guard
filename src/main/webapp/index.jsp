@@ -27,7 +27,7 @@
 				<tr>
 					<td width="40%">
 						<a href="http://www.jspace.com.br/link">
-							<img alt="remover protetor de link" id="logo" src="images/link-me.jpg" align="left"/>
+							<img alt="remover protetor de link" id="logo" src="<%=request.getContextPath()%>/images/link-me.jpg" align="left"/>
 						</a>
 					</td>
 					<td>
@@ -40,7 +40,7 @@
 							para que você possa continuar com o download.
 						</h3>
 						<p class="version">
-							Versão 2.3
+							Versão 2.5
 						</p>
 						<div id="donation">
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
