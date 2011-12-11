@@ -3,7 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-  <display-name>Remove Link Protector</display-name>
+  <display-name>Remover Protetor de Links</display-name>
   
   <servlet>
   	<servlet-name>RemoveLinkServlet</servlet-name>

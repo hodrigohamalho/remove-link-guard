@@ -25,7 +25,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 				protectedUrl = decryptCustomProtectors(protectedUrl);
 			}else{
 				protectedUrl = parseUrl(protectedUrl.trim());
-				protectedUrl = descryptUrl(protectedUrl);
+				protectedUrl = decryptUrl(protectedUrl);
 			}
 		}while(isNestedUrl(protectedUrl));
 
@@ -36,13 +36,17 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		String url = "";
 
 		do{
+			if (protectedUrl.contains("%3f")){
+				protectedUrl = protectedUrl.replaceAll("%3f", "?");
+			}
+			
 			url = extractSignificantUrl(protectedUrl, url);
 		}while(isNestedUrl(url));
 
 		return url;
 	}
 
-	private String descryptUrl(String protectedUrl) {
+	private String decryptUrl(String protectedUrl) {
 		// Don't put elseif in this ifs sequence.
 		if (protectedUrl.startsWith(HTTP_ASCII)) {
 			protectedUrl = LinkUtil.decodeAsciiLink(protectedUrl);
@@ -66,6 +70,7 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 			downloadTitle = CustomLinks.vinXpRemoveInvalidChars(downloadTitle);
 			protectedUrl = "http://www.vinxp.com/"+downloadTitle;
 		}
+		
 		
 		return protectedUrl;
 	}
