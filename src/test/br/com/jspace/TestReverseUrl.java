@@ -59,4 +59,14 @@ public class TestReverseUrl extends AbstractUrlTest{
 		breakProtectedUrl("http://fire.tiozao.net/?link=Sjh56Jm/elif/moc.evreselif.www//:ptth", "http://www.fileserve.com/file/mJ65hjS");
 	}
 	
+	@Test
+	public void breakReverseUrl11() throws Exception{
+		breakProtectedUrl("http://telona.biz/protetor/?mldez6w1/ot.lu//:ptth", "http://ul.to/1w6zedlm");
+	}
+	
+	@Test
+	public void breakReverseUrl12() throws Exception{
+	 	breakProtectedUrl("http://telona.biz/protetor/?1603275191/elif/moc.cinoselif.www//:ptth", "http://www.filesonic.com/file/1915723061");
+	}
+	
 }

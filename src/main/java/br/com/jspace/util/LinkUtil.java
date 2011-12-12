@@ -20,11 +20,13 @@ public class LinkUtil {
 	static{
 		urlSeparator.add("/?url=http://yess.me/ir/id/");
 		urlSeparator.add("/?url=");
+		urlSeparator.add("/ir/id/.");
 		urlSeparator.add("/ir/id/");
 		urlSeparator.add("/?link=");
+		urlSeparator.add("/link/?");
+		urlSeparator.add("/link/");
 		urlSeparator.add("/?go!");
 		urlSeparator.add("/filmesquentes/?");
-		urlSeparator.add("/link/?");
 		urlSeparator.add("/download/?");
 		urlSeparator.add("/350/");
 		urlSeparator.add("/?t=");

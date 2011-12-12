@@ -49,4 +49,16 @@ public class TestBase64Url extends AbstractUrlTest{
 		breakProtectedUrl("http://yess.me/ir/id/aHR0cDovL2dvby5nbC9iUElRRw==/", "http://goo.gl/bPIQG");
 	}
 	
+	@Test
+	public void breakBase64Url9() throws Exception{
+		breakProtectedUrl("http://fgprotege.com/link/MTU5NyMjIzE5IyMjaHR0cDovL3d3dy5tZWdhdmlkZW8uY29tLz9kPVA4VDE2VUhB", "http://www.megavideo.com/?d=P8T16UHA");
+	}
+	
+	@Test
+	public void breakBase64Url10() throws Exception{
+		breakProtectedUrl("http://linkprotegido.info/link/?url=http://yess.me/ir/id/aHR0cDovL3d3dy5maWxlc29uaWMuY29tL2ZpbGUvMjA4MTc0Mzc0NA==/", "http://www.filesonic.com/file/2081743744");
+	}
+	
+	
+	
 }
