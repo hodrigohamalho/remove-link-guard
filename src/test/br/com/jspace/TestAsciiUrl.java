@@ -29,4 +29,14 @@ public class TestAsciiUrl extends AbstractUrlTest{
 		breakProtectedUrl("http://protetordelink.tv/download/protetorbtf/350/687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d4d545037594d3031", "http://www.megaupload.com/?d=MTP7YM01");
 	}
 	
+	@Test
+	public void breakAsciiUrl4() throws Exception{
+		breakProtectedUrl("http://www.baixarfilmesonline.tv/proteger/?id=687474703a2f2f7777772e6d656761766964656f2e636f6d2f3f643d444f5a4f334e5a4f", "http://www.megavideo.com/?d=DOZO3NZO");
+	}
+	
+	@Test
+	public void breakAsciiUrl5() throws Exception{
+		breakProtectedUrl("http://www.baixarfilmesonline.tv/proteger/?id=687474703a2f2f7777772e6d65676175706c6f61642e636f6d2f3f643d444f5a4f334e5a4f", "http://www.megaupload.com/?d=DOZO3NZO");
+	}
+	
 }
