@@ -40,7 +40,7 @@
 							para que você possa continuar com o download.
 						</h3>
 						<p class="version">
-							Versão 2.5
+							Versão 2.6
 						</p>
 						<div id="donation">
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">

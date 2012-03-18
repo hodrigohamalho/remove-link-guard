@@ -44,7 +44,7 @@ public class LinkUtil {
 		return new String(Base64.decodeBase64(url.getBytes()));
 	}
 
-	public static String decodeInvertedUrl(String url) {
+	public static String decodeReverseUrl(String url) {
 		StringBuilder newUrl = new StringBuilder(url);
 
 		return newUrl.reverse().toString();

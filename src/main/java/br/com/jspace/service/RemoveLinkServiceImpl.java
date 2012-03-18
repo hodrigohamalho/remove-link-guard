@@ -16,13 +16,15 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 	String BEETWEN_QUERY_AND_EQUALS = "\\?[\\w]++\\=";
 	String BEETWEN_QUERY_AND_EXCLAMATION = "\\?[\\w]++\\!";
 	String HTTP_ASCII = "687474703";
+	
+	private CustomLinks customLinks = new CustomLinks();
 
 	public String breakUrl(String protectedUrl) {
 		validate(protectedUrl);
 
 		do{
-			if(CustomLinks.isCustomLink(protectedUrl)){
-				protectedUrl = decryptCustomProtectors(protectedUrl);
+			if(customLinks.isCustomLink(protectedUrl)){
+				protectedUrl = customLinks.decryptCustomProtectors(protectedUrl);
 			}else{
 				protectedUrl = parseUrl(protectedUrl.trim());
 				protectedUrl = decryptUrl(protectedUrl);
@@ -57,23 +59,12 @@ public class RemoveLinkServiceImpl implements RemoveLinkService {
 		}
 
 		if (protectedUrl.endsWith("//:ptth")) {
-			protectedUrl = LinkUtil.decodeInvertedUrl(protectedUrl);
+			protectedUrl = LinkUtil.decodeReverseUrl(protectedUrl);
 		}
 
 		return protectedUrl;
 	}
 
-	private String decryptCustomProtectors(String protectedUrl) {
-		if (CustomLinks.isVinXp(protectedUrl)){
-			String encryptedTitle = parseUrl(protectedUrl.trim());
-			String downloadTitle = LinkUtil.decodeAsciiLink(encryptedTitle);
-			downloadTitle = CustomLinks.vinXpRemoveInvalidChars(downloadTitle);
-			protectedUrl = "http://www.vinxp.com/"+downloadTitle;
-		}
-		
-		
-		return protectedUrl;
-	}
 
 	private void validate(String protectedUrl) {
 		if (protectedUrl.trim().contains(" ")) {
