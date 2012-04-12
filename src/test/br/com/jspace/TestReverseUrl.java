@@ -73,4 +73,9 @@ public class TestReverseUrl extends AbstractUrlTest{
 	public void breakReverseUrl13() throws Exception{
 		breakProtectedUrl("http://protetor.clubedodownload.info/4spf0het/ot.lu//:ptth.url", "http://ul.to/teh0fps4/");
 	}
+	
+	@Test
+	public void breakReverseUrl14() throws Exception{
+		breakProtectedUrl("http://link.baixedetudo.net/ApYDP7E/elif/moc.evreselif.www//:ptth.url", "http://www.fileserve.com/file/E7PDYpA/");
+	}
 }
