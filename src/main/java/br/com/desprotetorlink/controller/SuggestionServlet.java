@@ -1,4 +1,4 @@
-package br.com.jspace.controller;
+package br.com.desprotetorlink.controller;
 
 import java.io.IOException;
 
@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.jspace.mail.SendMail;
+import br.com.desprotetorlink.mail.SendMail;
 
 public class SuggestionServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

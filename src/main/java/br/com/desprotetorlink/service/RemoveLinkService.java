@@ -1,4 +1,4 @@
-package br.com.jspace.service;
+package br.com.desprotetorlink.service;
 
 public interface RemoveLinkService {
 	

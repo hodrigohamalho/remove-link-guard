@@ -1,4 +1,4 @@
-package br.com.jspace;
+package br.com.desprotetorlink;
 
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;

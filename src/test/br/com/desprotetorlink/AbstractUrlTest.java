@@ -1,9 +1,9 @@
-package br.com.jspace;
+package br.com.desprotetorlink;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
-import br.com.jspace.service.RemoveLinkService;
-import br.com.jspace.service.RemoveLinkServiceImpl;
+import br.com.desprotetorlink.service.RemoveLinkService;
+import br.com.desprotetorlink.service.RemoveLinkServiceImpl;
 
 /**
  * 

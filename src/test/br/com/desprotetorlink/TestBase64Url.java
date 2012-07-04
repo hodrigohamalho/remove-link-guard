@@ -1,4 +1,4 @@
-package br.com.jspace;
+package br.com.desprotetorlink;
 
 import org.junit.Test;
 

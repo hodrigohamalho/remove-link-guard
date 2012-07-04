@@ -1,6 +1,6 @@
-package br.com.jspace.util;
+package br.com.desprotetorlink.util;
 
-import br.com.jspace.service.RemoveLinkServiceImpl;
+import br.com.desprotetorlink.service.RemoveLinkServiceImpl;
 
 public class CustomLinks {
 

@@ -1,4 +1,4 @@
-package br.com.jspace.controller;
+package br.com.desprotetorlink.controller;
 
 import java.io.IOException;
 
@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.jspace.service.RemoveLinkService;
-import br.com.jspace.service.RemoveLinkServiceImpl;
+import br.com.desprotetorlink.service.RemoveLinkService;
+import br.com.desprotetorlink.service.RemoveLinkServiceImpl;
 
 /**
  * 

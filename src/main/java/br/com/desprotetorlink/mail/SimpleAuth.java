@@ -1,4 +1,4 @@
-package br.com.jspace.mail;
+package br.com.desprotetorlink.mail;
 
 import javax.mail.Authenticator;
 import javax.mail.PasswordAuthentication;

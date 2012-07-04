@@ -1,4 +1,4 @@
-package br.com.jspace.util;
+package br.com.desprotetorlink.util;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,10 +1,10 @@
-package br.com.jspace.service;
+package br.com.desprotetorlink.service;
 
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
 
-import br.com.jspace.util.CustomLinks;
-import br.com.jspace.util.LinkUtil;
+import br.com.desprotetorlink.util.CustomLinks;
+import br.com.desprotetorlink.util.LinkUtil;
 
 /**
  * 
