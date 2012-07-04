@@ -33,5 +33,5 @@ Alguns exemplos de links que a aplicação remove:
 
 Acesso:
 -------
-	http://www.jspace.com.br/link
+	http://desprotetorlink.com.br/
 
