@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-modules id="moduleCoreId" project-version="1.5.0">
-    <wb-module deploy-name="removeLinkGuard">
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test"/>
-        <property name="context-root" value="removeLinkGuard"/>
-        <property name="java-output-path" value="/removeLinkGuard/target/classes"/>
-    </wb-module>
+  <wb-module deploy-name="desprotetor-link">
+    <property name="context-root" value="desprotetor-link"/>
+    <wb-resource deploy-path="/" source-path="src/main/webapp"/>
+    <property name="java-output-path" value="/src/main/webapp/WEB-INF/classes"/>
+    <wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
+  </wb-module>
 </project-modules>
