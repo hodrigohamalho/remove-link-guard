@@ -1,28 +1,30 @@
-<!DOCTYPE web-app PUBLIC
- "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
- "http://java.sun.com/dtd/web-app_2_3.dtd" >
+<?xml version="1.0" encoding="UTF-8"?>
 
-<web-app>
-  <display-name>Remover Protetor de Links</display-name>
-  
-  <servlet>
-  	<servlet-name>RemoveLinkServlet</servlet-name>
-  	<servlet-class>br.com.desprotetorlink.controller.RemoveLinkServlet</servlet-class>
-  </servlet>
-  
-  <servlet>
-  	<servlet-name>SuggestionServlet</servlet-name>
-  	<servlet-class>br.com.desprotetorlink.controller.SuggestionServlet</servlet-class>
-  </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>RemoveLinkServlet</servlet-name>
-  	<url-pattern>/removeLink.do</url-pattern>
-  </servlet-mapping>
-  
-  <servlet-mapping>
-  	<servlet-name>SuggestionServlet</servlet-name>
-  	<url-pattern>/suggestion.do</url-pattern>
-  </servlet-mapping>
-  
+<web-app version="3.0"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         metadata-complete="false">
+
+			  <servlet>
+			  	<servlet-name>RemoveLinkServlet</servlet-name>
+			  	<servlet-class>br.com.desprotetorlink.controller.RemoveLinkServlet</servlet-class>
+			  </servlet>
+
+			  <servlet>
+			  	<servlet-name>SuggestionServlet</servlet-name>
+			  	<servlet-class>br.com.desprotetorlink.controller.SuggestionServlet</servlet-class>
+			  </servlet>
+
+			  <servlet-mapping>
+			  	<servlet-name>RemoveLinkServlet</servlet-name>
+			  	<url-pattern>/removeLink.do</url-pattern>
+			  </servlet-mapping>
+
+			  <servlet-mapping>
+			  	<servlet-name>SuggestionServlet</servlet-name>
+			  	<url-pattern>/suggestion.do</url-pattern>
+			  </servlet-mapping>
+         
 </web-app>
+
