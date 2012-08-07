@@ -18,7 +18,7 @@ public class SendMail {
 	private String mailSMTPServer;
 	private String mailSMTPServerPort;
 	private String username = "removelinkguard@gmail.com";
-	private String password = "***";
+	private String password = "a1b2c3e4f5g6";
 
 	// Default gmail.
 	public SendMail() { 
@@ -81,6 +81,7 @@ public class SendMail {
 			tr.sendMessage(msg, msg.getAllRecipients());
 			tr.close();
 		} catch (Exception e) {
+			System.out.println(">> Erro: "+e.getMessage());
 			e.printStackTrace();
 		}
 
