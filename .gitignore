@@ -1,3 +1,7 @@
-.classpath
-.settings/
 target
+
+# Ignore all dotfiles...
+.*
+# except for .gitignore
+!.gitignore
+!.openshift
