@@ -51,3 +51,9 @@ function submitLink(){
 		}
 	});
 }
+
+
+$(window).load(function(){
+  $('#facebook')
+    .html('<iframe src="http://www.facebook.com/plugins/like.php?href=http://jspace.com.br/link&layout=standard&show_faces=false&width=380&action=like&colorscheme=light&height=25&locale=pt_BR" scrolling="no" height="30" frameborder="0" style="border:none; allowtransparency="true" "></iframe>');
+});

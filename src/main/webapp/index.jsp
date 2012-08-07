@@ -7,9 +7,14 @@
 	<meta name="description" content="Remover protetor de link. Baixar sem precisar cadastrar celular. Remover Protetor de Link. Burlar protetor de link." />
 	<meta name="keywords" content="desproteger link, remove protetor de link, remover link protegido, protetor de url, burlar protetor de link, baixar sem precisar cadastrar celular." />
 	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js" type="text/javascript"></script>
-	<script src="<%=request.getContextPath()%>/js/linkRemove.js" type="text/javascript"></script>
-	<script src="<%=request.getContextPath()%>/js/suggestion.js" type="text/javascript"></script>
+	<script src="<%=request.getContextPath()%>/js/LAB.min.js" type="text/javascript"></script>
+	<script>
+	   $LAB
+	   .script("js/jquery.min.js").wait()
+	   .script("js/linkRemove.js")
+	   .script("js/suggestion.js")
+	   .script("http://platform.twitter.com/widgets.js");
+	</script>
 </head>
 
 <body>
@@ -46,8 +51,8 @@
 							<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 								<input type="hidden" name="cmd" value="_s-xclick">
 								<input type="hidden" name="hosted_button_id" value="MSUGUFHLA79VS">
-								<input type="image" src="https://www.paypal.com/pt_BR/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos on-line!">
-								<img alt="" border="0" src="https://www.paypal.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+								<input type="image" src="<%=request.getContextPath() %>/images/btn_donate_LG.gif" name="submit" alt="PayPal - A maneira mais fácil e segura de efetuar pagamentos on-line!" />
+								<img alt="" border="0" src="<%=request.getContextPath() %>/images/pixel.gif" width="1" height="1">
 							</form>
 						</div>
 					</td>
@@ -72,13 +77,10 @@
 				
 				<div id="midia">
 					<div id="facebook" >
-						<iframe src="http://www.facebook.com/plugins/like.php?href=http://jspace.com.br/link&layout=standard&
-		show_faces=false&width=380&action=like&colorscheme=light&height=25&locale=pt_BR" scrolling="no" height="30" frameborder="0" style="border:none; allowtransparency='true'">
-						</iframe>
 					</div>
 					
 					<div id="twitter">
-						<a href="http://twitter.com/share" class="twitter-share-button" data-text="Acabei de fazer um download sossegado, graças ao desprotetor de links ;) #recomendo" data-count="vertical" data-via="hodrigohamalho">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+						<a href="http://twitter.com/share" class="twitter-share-button" data-text="Acabei de fazer um download sossegado, graças ao desprotetor de links ;) #recomendo" data-count="vertical" data-via="hodrigohamalho">Tweet</a>
 					</div>
 					
 					<div class="clear"></div>
