@@ -1,10 +1,8 @@
 target
-<<<<<<< HEAD
 
 # Ignore all dotfiles...
 .*
+
 # except for .gitignore
 !.gitignore
 !.openshift
-=======
->>>>>>> 1ea715cb857b37fff00eece96377f355d9bd6dda
