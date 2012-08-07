@@ -18,7 +18,7 @@ public class SendMail {
 	private String mailSMTPServer;
 	private String mailSMTPServerPort;
 	private String username = "removelinkguard@gmail.com";
-	private String password = "a1b2c3e4f5g6";
+	private String password = "***";
 
 	// Default gmail.
 	public SendMail() { 
